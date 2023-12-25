@@ -19,7 +19,7 @@
 
 **Demo**
 
->To see the BitValue React App in action, you can visit the live demo [here](https://sonal-jk.github.io/Robo-3D/).
+>To see the ROBO 3D Website in action, you can visit the live demo [here](https://sonal-jk.github.io/Robo-3D/).
 
 
 Thank you for checking out Robo 3D! If you have any questions or feedback, please don't hesitate to reach out.

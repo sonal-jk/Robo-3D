@@ -109,3 +109,59 @@ d.addEventListener("click",()=>{
 //  // if (content.className='cpp-code') content.classList.add('notcode')
 //   document.querySelector('.cpp-code').classList.add('notcode')
 // });
+
+
+
+// clipboard1.for_each(function(clip){
+//   clip.on('success', function(e) {
+//       copying();
+//       console.log('Copied content 1:', e.text);
+//   });
+//   clip.on('error', function(e) {
+//       console.error('Failed to copy content 1:', e.action);
+//   });
+
+// })
+// clipboard1.on('success', function(e) {
+//   copying();
+//   console.log('Copied content 1:', e.text);
+// });
+// clipboard1.on('error', function(e) {
+//   console.error('Failed to copy content 1:', e.action);
+// });
+
+// // Handle success and error events for button 2
+// clipboard2.on('success', function(e) {
+//   copying();
+//   console.log('Copied content 2:', e.text);
+// });
+// clipboard2.on('error', function(e) {
+//   console.error('Failed to copy content 2:', e.action);
+// });
+
+// clipboard3.on('success', function(e) {
+//   copying();
+//   console.log('Copied content 3:', e.text);
+// });
+// clipboard3.on('error', function(e) {
+//   console.error('Failed to copy content 3:', e.action);
+// });
+
+// // Handle success and error events for button 2
+// clipboard4.on('success', function(e) {
+//   copying();
+//   console.log('Copied content 4:', e.text);
+// });
+// clipboard4.on('error', function(e) {
+//   console.error('Failed to copy content 4:', e.action);
+// });
+// var clipboard = new ClipboardJS('#copyButton', {
+// target: function(trigger) {
+// return trigger.previousElementSibling.querySelector('content-code');
+// }
+// });
+// let snip=document.querySelector(".snip");
+// var clipboard1 = new ClipboardJS('.copy-but1');
+// var clipboard2 = new ClipboardJS('.copy-but2');
+// var clipboard3 = new ClipboardJS('.copy-but3');
+// var clipboard4 = new ClipboardJS('.copy-but4');

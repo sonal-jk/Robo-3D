@@ -567,7 +567,7 @@ footer img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:0.5% 2%;
+    padding:1% 2%;
     vertical-align: middle;
     color: white;
     background-color: #1c1b1c;
@@ -613,6 +613,36 @@ pre{
     position: relative;
     margin: 0;
 }
+.but-div{
+    position: absolute;
+    top: -2%;
+    right: 2%;
+}
+.card1{
+
+#java1 .but-div{
+    top: -3.4%;
+}
+#cpp1 .but-div{
+    top: -3.8%;
+}
+#py1 .but-div{
+    top: -4.7%;
+}}
+
+.card2{
+    #java2 .but-div{
+        top: -2.5%;
+    }
+    #cpp2 .but-div{
+        top: -3%;
+    }
+    #py2 .but-div{
+        top: -3.7%;
+    }
+
+}
+
 .copy-button{
     border: none;
     cursor: pointer;
@@ -643,7 +673,7 @@ pre{
     transform: rotate(45deg);
     visibility: hidden;
 }
-.snip.copied .copy-button::before,.snip.copied .copy-button::after{
+.but-div.copied .copy-button::before,.but-div.copied .copy-button::after{
     visibility: visible;
 }
 

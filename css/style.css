@@ -556,9 +556,7 @@ footer img{
     
 }
 
-.card1{
 
-}
 .snip{
     width: 80%;
     margin:40% 10%;
@@ -612,6 +610,7 @@ pre{
 
 }
 .content-code{
+    position: relative;
     margin: 0;
 }
 .copy-button{
@@ -649,7 +648,7 @@ pre{
 }
 
 
-#java-code,#py-code, #asm-code{
+.java-code,.py-code, .asm-code{
     display: none;
 }
 

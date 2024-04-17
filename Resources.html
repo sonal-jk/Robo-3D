@@ -79,16 +79,15 @@
         <div class="snip">
             <div class="lang-menu">
             <div class="languages">
-                <button onclick="showcontent('cpp-code')"  class="cpp-but">C++</button>
-                <button onclick="showcontent('java-code')"  class="java-but">Java</button>
-                <button onclick="showcontent('py-code')" class="py-but">Python</button>
-                <button onclick="showcontent('asm-code')" class="asm-but">Assembly</button>
+                <button onclick="showcontent('cpp1')"  class="cpp-but">C++</button>
+                <button onclick="showcontent('java1')"  class="java-but">Java</button>
+                <button onclick="showcontent('py1')" class="py-but">Python</button>
+                <button onclick="showcontent('asm1')" class="asm-but">Assembly</button>
             </div>
-            <button class="copy-button">
-                <i class="fa-regular fa-clipboard"></i> Copy</button>
+          
         </div>
         <div class="code">
-            <div class="content-code" id="cpp-code">
+            <div class="content-code cpp-code" id="cpp1" >
         <pre ><code id="text" class="language-cpp">
                 #include &lt;Servo.h&gt;
                 #define NUM_FINGERS 5  // Number of fingers
@@ -123,8 +122,10 @@
                 }
                 
         </code></pre>
+        <button data-clipboard-target="#cpp1" class="copy-button copy-but1" >
+            <i class="fa-regular fa-clipboard"></i> Copy</button>
 </div>
-<div class="content-code" id="java-code">
+<div class="content-code java-code" id="java1">
         <pre><code class="language-Java">
        
             import java.util.concurrent.TimeUnit;
@@ -163,8 +164,10 @@
             
            
                 
-          </code> </pre></div>
-          <div class="content-code" id="py-code">
+          </code> </pre>
+          <button  data-clipboard-target="#java1" class="copy-button copy-but2">
+            <i class="fa-regular fa-clipboard"></i> Copy</button></div>
+          <div class="content-code py-code" id="py1">
           <pre ><code class="language-py">
             import time
             import RPi.GPIO as GPIO
@@ -193,8 +196,10 @@
                GPIO.cleanup()
      
            </code></pre>
+           <button data-clipboard-target="#py1"  class="copy-button copy-but3">
+            <i class="fa-regular fa-clipboard"></i> Copy</button>
           </div>
-          <div class="content-code" id="asm-code">
+          <div class="content-code asm-code" id="asm1">
            <pre ><code class="language-asm">
             ; Define constants
     NUM_FINGERS  EQU 5          ; Number of fingers
@@ -260,6 +265,8 @@
         RET
     
         </code></pre>
+        <button  data-clipboard-target="#asm1"  class="copy-button copy-but4">
+            <i class="fa-regular fa-clipboard"></i> Copy</button>
         </div>
     </div>
     </div>
@@ -275,6 +282,261 @@
  
    
     
+
+    <div class="card2"> 
+
+        <div class="snip">
+            <div class="lang-menu">
+            <div class="languages">
+                <button onclick="showcontent('cpp2')"  class="cpp-but">C++</button>
+                <button onclick="showcontent('java2')"  class="java-but">Java</button>
+                <button onclick="showcontent('py2')" class="py-but">Python</button>
+                <button onclick="showcontent('asm2')" class="asm-but">Assembly</button>
+            </div>
+          
+        </div>
+        <div class="code">
+            <div class="content-code cpp-code" id="cpp2">
+        <pre ><code id="text" class="language-cpp">
+            #include &lt;Servo.h&gt;
+                #define NUM_LEGS 2      // Number of legs
+                #define NUM_JOINTS 3    // Number of joints per leg
+                #define DELAY_TIME 500  // Delay time between movements in milliseconds
+                Servo legs[NUM_LEGS][NUM_JOINTS]; // Array to hold servo objects for each leg and joint
+                // Pin numbers for each leg joint servo
+                int legPins[NUM_LEGS][NUM_JOINTS] = {
+                  {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
+                  {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
+                };
+                void setup() {
+                  // Attach each servo to its respective pin
+                  for (int i = 0; i < NUM_LEGS; i++) {
+                    for (int j = 0; j < NUM_JOINTS; j++) {
+                      legs[i][j].attach(legPins[i][j]);
+                    }
+                  }
+                }
+                void loop() {
+                  // Move legs forward
+                  moveLegsForward();
+                  delay(DELAY_TIME);
+                  // Move legs backward
+                  moveLegsBackward();
+                  delay(DELAY_TIME);
+                }
+                // Function to move legs forward
+                void moveLegsForward() {
+                  for (int i = 0; i < NUM_LEGS; i++) {
+                    for (int j = 0; j < NUM_JOINTS; j++) {
+                      legs[i][j].write(0); // Adjust angle as needed for forward movement
+                    }
+                  }
+                }
+                // Function to move legs backward
+                void moveLegsBackward() {
+                  for (int i = 0; i < NUM_LEGS; i++) {
+                    for (int j = 0; j < NUM_JOINTS; j++) {
+                      legs[i][j].write(180); // Adjust angle as needed for backward movement
+                    }
+                  }
+                }
+                
+                    
+        </code></pre>
+        <button  data-clipboard-target="#cpp2" class="copy-button copy-but1">
+            <i class="fa-regular fa-clipboard"></i> Copy</button>
+</div>
+<div class="content-code java-code" id="java2">
+        <pre><code class="language-Java">
+       
+            import edu.wpi.first.wpilibj.Servo;
+            public class LegControl {
+                private static final int NUM_LEGS = 2;      // Number of legs
+                private static final int NUM_JOINTS = 3;    // Number of joints per leg
+                private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
+                public static void main(String[] args) {
+                    Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
+                    int[][] legPins = {
+                        {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
+                        {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
+                    };
+                    // Attach each servo to its respective pin
+                    for (int i = 0; i < NUM_LEGS; i++) {
+                        for (int j = 0; j < NUM_JOINTS; j++) {
+                            legs[i][j] = new Servo(legPins[i][j]);
+                        }
+                    }
+                    while (true) {
+                        // Move legs forward
+                        moveLegsForward(legs);
+                        delay(DELAY_TIME);
+                        // Move legs backward
+                        moveLegsBackward(legs);
+                        delay(DELAY_TIME);
+                    }
+                }
+                // Function to move legs forward
+                private static void moveLegsForward(Servo[][] legs) {
+                    for (int i = 0; i < NUM_LEGS; i++) {
+                        for (int j = 0; j < NUM_JOINTS; j++) {
+                            legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
+                        }
+                    }
+                }
+                // Function to move legs backward
+                private static void moveLegsBackward(Servo[][] legs) {
+                    for (int i = 0; i < NUM_LEGS; i++) {
+                        for (int j = 0; j < NUM_JOINTS; j++) {
+                            legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
+                        }
+                    }
+                }
+                // Function to emulate delay
+                private static void delay(int milliseconds) {
+                    try {
+                        Thread.sleep(milliseconds);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            
+            
+           
+                
+          </code> </pre>
+          <button  data-clipboard-target="#java2" class="copy-button copy-but2">
+            <i class="fa-regular fa-clipboard"></i> Copy</button></div>
+          <div class="content-code py-code" id="py2">
+          <pre ><code class="language-py">
+            from time import sleep
+import RPi.GPIO as GPIO
+NUM_LEGS = 2      # Number of legs
+NUM_JOINTS = 3    # Number of joints per leg
+DELAY_TIME = 0.5  # Delay time between movements in seconds
+# Pin numbers for each leg joint servo
+leg_pins = [
+    [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
+    [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
+]
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+for leg in leg_pins:
+    for pin in leg:
+        GPIO.setup(pin, GPIO.OUT)
+# Function to move legs forward
+def move_legs_forward():
+    for leg in leg_pins:
+        for pin in leg:
+            GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
+# Function to move legs backward
+def move_legs_backward():
+    for leg in leg_pins:
+        for pin in leg:
+            GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
+try:
+    while True:
+        # Move legs forward
+        move_legs_forward()
+        sleep(DELAY_TIME)
+        # Move legs backward
+        move_legs_backward()
+        sleep(DELAY_TIME)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+
+     
+           </code></pre>
+           <button  data-clipboard-target="#py2"  class="copy-button copy-but3">
+            <i class="fa-regular fa-clipboard"></i> Copy</button>
+          </div>
+          <div class="content-code asm-code" id="asm2">
+           <pre ><code class="language-asm">
+            ; Define constants
+            NUM_LEGS        EQU 2          ; Number of legs
+            NUM_JOINTS      EQU 3          ; Number of joints per leg
+            DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
+            ; Define servo angles
+            SERVO_FORWARD   EQU 0           ; Angle for forward movement
+            SERVO_BACKWARD  EQU 180         ; Angle for backward movement
+            ; Define register usage
+            REG_DELAY       R0              ; Delay register
+            REG_COUNTER     R1              ; Loop counter register
+            REG_SERVO_ANGLE R2              ; Servo angle register
+            ; Define pin numbers for each leg joint servo
+            LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
+                            DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
+                            DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
+            ; Initialize
+            INIT:
+                ; Setup GPIO pins for leg joint servos
+                LDR R1, =LEG_PINS
+                MOV R2, #NUM_LEGS
+            INIT_LOOP:
+                LDRB R3, [R1], #1
+                MOV R0, #1
+                ; Setup GPIO pin for servo control
+                GPIO_SETUP R3, OUTPUT
+                SUBS R2, R2, R0
+                BNE INIT_LOOP
+            ; Main loop
+            MAIN_LOOP:
+                ; Move legs forward
+                MOVE_LEGS_FORWARD
+                ; Delay
+                MOV R0, #DELAY_TIME
+                CALL DELAY
+                ; Move legs backward
+                MOVE_LEGS_BACKWARD
+                ; Delay
+                MOV R0, #DELAY_TIME
+                CALL DELAY
+                ; Repeat
+                B MAIN_LOOP
+            ; Subroutine to move legs forward
+            MOVE_LEGS_FORWARD:
+                ; Set servo angle for each leg joint
+                LDR R1, =SERVO_FORWARD
+                MOV R2, #NUM_LEGS
+            MOVE_FORWARD_LOOP:
+                ; Set servo angle
+                LDRB R3, [R1], #1
+                FOR R4, 0, NUM_JOINTS-1
+                    ; Write servo angle to GPIO pin
+                    PWM_WRITE [R3+R4], R1
+                ENDFOR
+                SUBS R2, R2, #1
+                BNE MOVE_FORWARD_LOOP
+                RET
+            ; Subroutine to move legs backward
+            MOVE_LEGS_BACKWARD:
+                ; Set servo angle for each leg joint
+                LDR R1, =SERVO_BACKWARD
+                MOV R2, #NUM_LEGS
+            MOVE_BACKWARD_LOOP:
+                ; Set servo angle
+                LDRB R3, [R1], #1
+                FOR R4, 0, NUM_JOINTS-1
+                    ; Write servo angle to GPIO pin
+                   
+                
+        </code></pre>
+        <button data-clipboard-target="#asm2"  class="copy-button copy-but4">
+            <i class="fa-regular fa-clipboard"></i> Copy</button>
+        </div>
+    </div>
+    </div>
+        
+        
+        
+ 
+    
+
+
+
+    </div>
+ 
+
     <footer>
     <div>
 
@@ -298,46 +560,90 @@
 
 <script>
 
-    var clipboard = new ClipboardJS('.copy-button', {
-        target: function(trigger) {
-            // Find the code block associated with the copy button
-            var snippetContainer = trigger.closest('.snip');
+
+    let snip=document.querySelector(".snip");
+    var clipboard1 = new ClipboardJS('.copy-but1');
+    var clipboard2 = new ClipboardJS('.copy-but2');
+    var clipboard3 = new ClipboardJS('.copy-but3');
+    var clipboard4 = new ClipboardJS('.copy-but4');
 
 
-
-            return snippetContainer.querySelector('code');
-        }
-    });
-
-
-
-    clipboard.on('success', function(e) {
-        let snip=document.querySelector(".snip");
+    function copying(){
         snip.classList.add("copied");
-   window.getSelection().removeAllRanges();
-   setTimeout(function(){
-   snip.classList.remove("copied");
+        window.getSelection().removeAllRanges();
+        setTimeout(function(){
+        snip.classList.remove("copied");
+     
+        },2500);
+    }
 
-   },2500);
-        e.clearSelection();
-        console.log('Copied!');
+    // Handle success and error events for button 1
+    clipboard1.on('success', function(e) {
+        copying();
+        console.log('Copied content 1:', e.text);
+    });
+    clipboard1.on('error', function(e) {
+        console.error('Failed to copy content 1:', e.action);
     });
 
-    clipboard.on('error', function(e) {
-        console.error('Failed to copy:', e.action);
+    // Handle success and error events for button 2
+    clipboard2.on('success', function(e) {
+        copying();
+        console.log('Copied content 2:', e.text);
+    });
+    clipboard2.on('error', function(e) {
+        console.error('Failed to copy content 2:', e.action);
     });
 
+    clipboard3.on('success', function(e) {
+        copying();
+        console.log('Copied content 3:', e.text);
+    });
+    clipboard3.on('error', function(e) {
+        console.error('Failed to copy content 3:', e.action);
+    });
+
+    // Handle success and error events for button 2
+    clipboard4.on('success', function(e) {
+        copying();
+        console.log('Copied content 4:', e.text);
+    });
+    clipboard4.on('error', function(e) {
+        console.error('Failed to copy content 4:', e.action);
+    });
+  var clipboard = new ClipboardJS('#copyButton', {
+   target: function(trigger) {
+     return trigger.previousElementSibling.querySelector('content-code');
+   }
+ });
+
+
+    
   function showcontent(id){
-    var contents = document.querySelectorAll('.content-code');
-    contents.forEach(function(content) {
 
-        content.classList.remove('showcode');
-        document.querySelector('#cpp-code').classList.add('notcode')
-    });
+
+
+    var contents = document.querySelectorAll('.content-code');
+
+
+    for (var i=0;i<contents.length;i++){
+        contents[i].classList.remove('showcode')
+ 
+        //contents[i].querySelector('.cpp-code').classList.add('notcode')
+
+    }
+    if (id=='java1' || id=='py1' || id=='asm1' ) {document.querySelector('#cpp1').classList.add('notcode')
+    document.querySelector('#cpp2').classList.remove('notcode')
+}
+    else if (id=='java2' || id=='py2' || id=='asm2' ) {document.querySelector('#cpp2').classList.add('notcode')
+    document.querySelector('#cpp1').classList.remove('notcode')}
+    else console.log('false')
 
     // Show the selected content element
     var selectedContent = document.getElementById(id);
     selectedContent.classList.add('showcode');
+    
+   
   }
 
     

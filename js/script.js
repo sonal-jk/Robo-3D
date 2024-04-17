@@ -92,3 +92,20 @@ d.addEventListener("click",()=>{
 
 
 
+// clipboard.on('success', function(e) {
+        
+       
+//   e.clearSelection();
+//   console.log('Copied!');
+// });
+
+// clipboard.on('error', function(e) {
+//   console.error('Failed to copy:', e.action);
+// });
+
+// contents.forEach(function(content) {
+     
+//   content.classList.remove('showcode');
+//  // if (content.className='cpp-code') content.classList.add('notcode')
+//   document.querySelector('.cpp-code').classList.add('notcode')
+// });

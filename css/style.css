@@ -555,6 +555,111 @@ footer img{
     width: 100%;
     
 }
+
+.card1{
+
+}
+.snip{
+    width: 80%;
+    margin:40% 10%;
+
+
+}
+.lang-menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0.5% 2%;
+    vertical-align: middle;
+    color: white;
+    background-color: #1c1b1c;
+    border-radius:0.3em 0.3em 0 0 !important;
+    .languages{
+        margin: 0 !important;
+        button{
+            background: none;
+            color: white;
+            width: 50px;
+            border: none;
+            margin-right: 10px;
+            position: relative;
+        }
+        button::after{
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            width: 15px;
+            height: 15px;
+            background: #272822;
+            transform: rotate(45deg);
+            display: none;
+        }
+        button:active::after{
+            display: block;
+        }
+        
+    }
+
+
+}
+pre{
+    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    margin: 0 !important;
+    border-radius:0 0 0.3em 0.3em !important;
+
+}
+.content-code{
+    margin: 0;
+}
+.copy-button{
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: white;
+    position: relative;
+}
+.copy-button::before{
+    content: "Copied!";
+    font-weight: 100;
+    font-size: small;
+    position: absolute;
+    top: -150%;
+    z-index: 2;
+    background-color:#272822;
+    padding: 4px;
+    border-radius: 4px;
+    visibility: hidden;
+}
+.copy-button::after{
+    content: "";
+    position: absolute;
+    top: -90%;
+    left: 40%;
+    width: 15px;
+    height: 15px;
+    background: #272822;
+    transform: rotate(45deg);
+    visibility: hidden;
+}
+.snip.copied .copy-button::before,.snip.copied .copy-button::after{
+    visibility: visible;
+}
+
+
+#java-code,#py-code, #asm-code{
+    display: none;
+}
+
+.showcode{
+    display: block !important;
+}
+.notcode{
+    display: none ;
+}
+
 @media (min-width:763px) and (max-width:996px){
     .credit{
         margin: 0px 0.5%;
@@ -783,3 +888,4 @@ footer img{
     height: 100%;
     margin: 0;}
 }*/
+

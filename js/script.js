@@ -1,16 +1,16 @@
-function dmode(){
-    let x=document.body;
-    x.classList.add("dark");
-    x.classList.remove("light");
+// function dmode(){
+//     let x=document.body;
+//     x.classList.add("dark");
+//     x.classList.remove("light");
 
     
 
-}
-function lmode(){
-    let x=document.body;
-    x.classList.add("light");
-    x.classList.remove("dark");
-}
+// }
+// function lmode(){
+//     let x=document.body;
+//     x.classList.add("light");
+//     x.classList.remove("dark");
+// }
 const z=document.getElementById("ham");
 function myfunc(){
     
@@ -60,3 +60,35 @@ d.addEventListener("click",()=>{
 
 });
  
+
+
+
+
+
+
+// let snip=document.querySelector(".snip");
+// snip.querySelector(".copy-button").addEventListener("click",async()=>{
+//   let input=snip.getElementById("#text");
+  
+//   input.ariaSelected();
+//   try {
+//     await navigator.clipboard.writeText(input.innerHTML);
+//   } catch (err) {
+//     console.error(err.name, err.message);
+//   }
+//   document.execCommand("copy");
+//   snip.classList.add("copied");
+//   window.getSelection().removeAllRanges();
+//   setTimeout(function(){
+//     snip.classList.remove("copied");
+
+//   },2500);
+// })
+// var clipboard = new ClipboardJS('#copyButton', {
+//   target: function(trigger) {
+//       return trigger.previousElementSibling.querySelector('code');
+//   }
+// });
+
+
+

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="icon" href="images/white logo.png" >
+    <link rel="stylesheet" href="css/style.css
+    ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,200,1,0" />
+
+    <link rel="stylesheet" href="css/prism.css">
+</head>
+<body id="top" class="model">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+
+    <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+
+
+    <nav class="navbar p-0 text-white" id="top">
+  
+        <span class="brand text-white  "><a href="index.html"><img src="images/white logo.png" height="43px" width="50px" alt="logo"></a></span>
+    
+    <div id="ham" onclick="myfunc()">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+    </div>
+    
+    <div class="cont" id="show">
+        <div class=" option text-uppercase mt-1" id="links">
+            <ul class=" navbar-nav"></ul>
+                <li class="nav-link p-1 "><a  class="el" href="index.html">Home</a></li>
+                <li class="nav-link p-1 "><a class="el pr" href="#">Projects </a>
+                    
+                    <ul class="menu p-0" >
+                        <div>
+                        <li><a href="project.html#robo1">Robo Copta</a></li>
+                        <li><a href="project.html#robo2">Robo Alexa</a></li>
+                        <li><a href="project.html#robo3">Robo Pum</a></li>
+                    </div>
+                    </ul>
+                </li>
+                <li class="nav-link p-1 "><a class="el"  href="index.html#creator">About</a></li>
+                <li class="nav-link p-1 "><a class="el"  href="Resources.html">Resources</a></li>
+
+                
+                <li class="dropdown nav-link p-1  "><a class="el pr"  href="#">Contact Us </i></a>
+                    <ul class="menu p-0">
+                        
+                    <li><a href="https://www.instagram.com/kanix_op/?igshid=NTE5MzUyOTU%3D" target="_blank">
+                        <img src="images/instagram.png" alt="">&nbsp;Insta</a></li>
+                    <li><a href="https://mail.google.com/a/saitm.org/?view=cm&fs=1&to=sonal_213025@saitm.org" target="_blank">
+                        <img src="images/gmail.png" alt=""> Mail</a></li>
+                    <li><a href="https://www.linkedin.com/in/kanishk-chaudhary-59722822a" target="_blank">
+                        <img src="images/linkedin.png" alt=""> LinkedIn</a></li>
+                    
+                </ul>
+                </li><!--
+                <li class=" dropdown nav-link p-1 "><a  class="el pr" href="#">Mode</a>
+                <ul class="menu p-0">
+                    <div>
+                    <li ><a href="#" onclick="dmode()"><img src="images/dark-mode.png" alt="">Dark</a></li>
+                <li><a href="#"onclick="lmode()"> <img src="images/brightness.png" alt=""> Light</a></li>
+            </div></ul></li>-->
+            </ul>
+            
+        </div>
+    </div>
+      </nav>  
+
+      <div class="card1"> 
+
+        <div class="snip">
+            <div class="lang-menu">
+            <div class="languages">
+                <button onclick="showcontent('cpp-code')"  class="cpp-but">C++</button>
+                <button onclick="showcontent('java-code')"  class="java-but">Java</button>
+                <button onclick="showcontent('py-code')" class="py-but">Python</button>
+                <button onclick="showcontent('asm-code')" class="asm-but">Assembly</button>
+            </div>
+            <button class="copy-button">
+                <i class="fa-regular fa-clipboard"></i> Copy</button>
+        </div>
+        <div class="code">
+            <div class="content-code" id="cpp-code">
+        <pre ><code id="text" class="language-cpp">
+                #include &lt;Servo.h&gt;
+                #define NUM_FINGERS 5  // Number of fingers
+                #define DELAY_TIME 500 // Delay time between movements in milliseconds
+                Servo fingers[NUM_FINGERS]; // Array to hold servo objects for each finger
+                // Pin numbers for each finger servo
+                int fingerPins[NUM_FINGERS] = {2, 3, 4, 5, 6}; // Example pin numbers, adjust as needed
+                void setup() {
+                  // Attach each servo to its respective pin
+                  for (int i = 0; i < NUM_FINGERS; i++) {
+                    fingers[i].attach(fingerPins[i]);
+                  }
+                }
+                void loop() {
+                  // Move each finger sequentially
+                  moveFingersForward();
+                  delay(DELAY_TIME);
+                  moveFingersBackward();
+                  delay(DELAY_TIME);
+                }
+                // Function to move fingers forward (closing)
+                void moveFingersForward() {
+                  for (int i = 0; i < NUM_FINGERS; i++) {
+                    fingers[i].write(0); // Adjust angle as needed for closed position
+                  }
+                }
+                // Function to move fingers backward (opening)
+                void moveFingersBackward() {
+                  for (int i = 0; i < NUM_FINGERS; i++) {
+                    fingers[i].write(180); // Adjust angle as needed for open position
+                  }
+                }
+                
+        </code></pre>
+</div>
+<div class="content-code" id="java-code">
+        <pre><code class="language-Java">
+       
+            import java.util.concurrent.TimeUnit;
+            import edu.wpi.first.wpilibj.Servo;
+            public class FingerControl {
+                private static final int NUM_FINGERS = 5;
+                private static final int DELAY_TIME = 500; // Delay time between movements in milliseconds
+                public static void main(String[] args) throws InterruptedException {
+                    Servo[] fingers = new Servo[NUM_FINGERS];
+                    int[] fingerPins = { 2, 3, 4, 5, 6 }; // Example pin numbers, adjust as needed
+                    // Attach each servo to its respective pin
+                    for (int i = 0; i < NUM_FINGERS; i++) {
+                        fingers[i] = new Servo(fingerPins[i]);
+                    }
+                    while (true) {
+                        // Move each finger sequentially
+                        moveFingersForward(fingers);
+                        TimeUnit.MILLISECONDS.sleep(DELAY_TIME);
+                        moveFingersBackward(fingers);
+                        TimeUnit.MILLISECONDS.sleep(DELAY_TIME);
+                    }
+                }
+                // Function to move fingers forward (closing)
+                private static void moveFingersForward(Servo[] fingers) {
+                    for (int i = 0; i < NUM_FINGERS; i++) {
+                        fingers[i].setAngle(0); // Adjust angle as needed for closed position
+                    }
+                }
+                // Function to move fingers backward (opening)
+                private static void moveFingersBackward(Servo[] fingers) {
+                    for (int i = 0; i < NUM_FINGERS; i++) {
+                        fingers[i].setAngle(180); // Adjust angle as needed for open position
+                    }
+                }
+            }
+            
+           
+                
+          </code> </pre></div>
+          <div class="content-code" id="py-code">
+          <pre ><code class="language-py">
+            import time
+            import RPi.GPIO as GPIO
+            NUM_FINGERS = 5
+            DELAY_TIME = 0.5  # Delay time between movements in seconds
+     
+            # Example pin numbers, adjust as needed
+            finger_pins = [2, 3, 4, 5, 6]
+            # Setup GPIO
+            GPIO.setmode(GPIO.BCM)
+            GPIO.setup(finger_pins, GPIO.OUT)
+           def move_fingers_forward():
+               for pin in finger_pins:
+                   GPIO.output(pin, GPIO.LOW)  # Adjust angle as needed for closed position
+           def move_fingers_backward():
+               for pin in finger_pins:
+                   GPIO.output(pin, GPIO.HIGH)  # Adjust angle as needed for open position
+           try:
+               while True:
+                   # Move each finger sequentially
+                   move_fingers_forward()
+                   time.sleep(DELAY_TIME)
+                   move_fingers_backward()
+                   time.sleep(DELAY_TIME)
+           except KeyboardInterrupt:
+               GPIO.cleanup()
+     
+           </code></pre>
+          </div>
+          <div class="content-code" id="asm-code">
+           <pre ><code class="language-asm">
+            ; Define constants
+    NUM_FINGERS  EQU 5          ; Number of fingers
+    DELAY_TIME   EQU 500        ; Delay time between movements in milliseconds
+    SERVO_PIN_1  EQU 2          ; Pin number for servo 1
+    SERVO_PIN_2  EQU 3          ; Pin number for servo 2
+    ; Define servo angles
+    SERVO_CLOSED EQU 0           ; Angle for closed position
+    SERVO_OPEN   EQU 180         ; Angle for open position
+    ; Define register usage
+    REG_DELAY    R0              ; Delay register
+    REG_COUNTER  R1              ; Loop counter register
+    REG_SERVO    R2              ; Servo angle register
+    ; Initialize
+    INIT:
+        ; Setup GPIO pins for servo control
+        GPIO_SETUP SERVO_PIN_1, OUTPUT
+        GPIO_SETUP SERVO_PIN_2, OUTPUT
+    
+    ; Main loop
+    MAIN_LOOP:
+        ; Move fingers forward (closing)
+        MOVE_FINGERS_FORWARD
+        ; Delay
+        MOV REG_DELAY, DELAY_TIME
+        CALL DELAY
+        ; Move fingers backward (opening)
+        MOVE_FINGERS_BACKWARD
+        ; Delay
+        MOV REG_DELAY, DELAY_TIME
+        CALL DELAY
+        ; Repeat
+        JMP MAIN_LOOP
+    ; Subroutine to move fingers forward (closing)
+    MOVE_FINGERS_FORWARD:
+        ; Set servo angle for each finger
+        MOV REG_SERVO, SERVO_CLOSED
+        FOR REG_COUNTER, 0, NUM_FINGERS-1
+            ; Write servo angle to GPIO pin
+            PWM_WRITE SERVO_PIN[REG_COUNTER], REG_SERVO
+        ENDFOR
+        RET
+    ; Subroutine to move fingers backward (opening)
+    MOVE_FINGERS_BACKWARD:
+        ; Set servo angle for each finger
+        MOV REG_SERVO, SERVO_OPEN
+        FOR REG_COUNTER, 0, NUM_FINGERS-1
+            ; Write servo angle to GPIO pin
+            PWM_WRITE SERVO_PIN[REG_COUNTER], REG_SERVO
+        ENDFOR
+        RET
+    ; Subroutine for delay
+    DELAY:
+        ; Loop for delay
+        DELAY_LOOP:
+            ; Decrement delay register
+            DEC REG_DELAY
+            ; Check if delay complete
+            BRZ DELAY_DONE
+            ; Repeat delay loop
+            JMP DELAY_LOOP
+        DELAY_DONE:
+        RET
+    
+        </code></pre>
+        </div>
+    </div>
+    </div>
+        
+        
+        
+ 
+    
+
+
+
+    </div>
+ 
+   
+    
+    <footer>
+    <div>
+
+    <div id="foot">
+    <section id="opt">
+    <a href="index.html">Home</a>
+    <a href="#top">Projects</a>
+    <a href="index.html#creator">About</a>
+    <a href="Feedback.html">Feedback</a>
+</section>
+<hr>
+<section class="logos"><a href="https://www.instagram.com/kanix_op/?igshid=NTE5MzUyOTU%3D"><img src="images/instagram white logo.png" alt=""></a>
+<a href="https://github.com/sonal-jk"><img src="images/social.png" alt=""></a>
+<a href="https://www.linkedin.com/in/kanishk-chaudhary-59722822a"><img src="images/linkden logo.png" alt=""></a></section>
+    <hr><section class="copy">Website &copy; Robo3D.All rights reserved.</section>
+        </div></div>
+</footer>
+<script src="js/script.js"></script>
+<script src="js/prism.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+
+<script>
+
+    var clipboard = new ClipboardJS('.copy-button', {
+        target: function(trigger) {
+            // Find the code block associated with the copy button
+            var snippetContainer = trigger.closest('.snip');
+
+
+
+            return snippetContainer.querySelector('code');
+        }
+    });
+
+
+
+    clipboard.on('success', function(e) {
+        let snip=document.querySelector(".snip");
+        snip.classList.add("copied");
+   window.getSelection().removeAllRanges();
+   setTimeout(function(){
+   snip.classList.remove("copied");
+
+   },2500);
+        e.clearSelection();
+        console.log('Copied!');
+    });
+
+    clipboard.on('error', function(e) {
+        console.error('Failed to copy:', e.action);
+    });
+
+  function showcontent(id){
+    var contents = document.querySelectorAll('.content-code');
+    contents.forEach(function(content) {
+
+        content.classList.remove('showcode');
+        document.querySelector('#cpp-code').classList.add('notcode')
+    });
+
+    // Show the selected content element
+    var selectedContent = document.getElementById(id);
+    selectedContent.classList.add('showcode');
+  }
+
+    
+
+</script>
+
+</body>
+</html>

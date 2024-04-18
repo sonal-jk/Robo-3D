@@ -675,7 +675,15 @@ pre{
 .notcode{
     display: none !important;
 }
-
+#resource{
+   
+    footer{
+       position: absolute;
+       margin-top: 5%;
+    }
+       
+       
+   }
 .resource-cont{
     margin:2% 4%;
     padding:4% 0 6% 0;
@@ -701,7 +709,6 @@ pre{
 
             h3{
                 color: #B3005E;
-                padding: 2%;
             }
 
         }
@@ -937,6 +944,7 @@ pre{
 @media(max-width:600px){
     .resource-cont{
         margin: 8% 10%;
+        padding-bottom: 20%;
         .box-cont{
             grid-template-columns: repeat(auto-fit,minmax(60%,1fr));
             gap: 2%;

@@ -165,3 +165,24 @@ d.addEventListener("click",()=>{
 // var clipboard2 = new ClipboardJS('.copy-but2');
 // var clipboard3 = new ClipboardJS('.copy-but3');
 // var clipboard4 = new ClipboardJS('.copy-but4');
+   /* if (id=='java3' || id=='py3' || id=='asm3' ) {document.querySelector('#cpp3').classList.add('notcode')
+    document.querySelector('#cpp1').classList.remove('notcode')
+    document.querySelector('#cpp2').classList.remove('notcode')
+    document.querySelector('#cpp4').classList.remove('notcode')
+    document.querySelector('#cpp5').classList.remove('notcode')
+}
+else if (id=='java4' || id=='py4' || id=='asm4' ) {document.querySelector('#cpp4').classList.add('notcode')
+document.querySelector('#cpp1').classList.remove('notcode')
+document.querySelector('#cpp2').classList.remove('notcode')
+document.querySelector('#cpp3').classList.remove('notcode')
+document.querySelector('#cpp5').classList.remove('notcode')
+}
+else if (id=='java5' || id=='py5' || id=='asm5' ) {document.querySelector('#cpp5').classList.add('notcode')
+    document.querySelector('#cpp1').classList.remove('notcode')
+    document.querySelector('#cpp2').classList.remove('notcode')
+    document.querySelector('#cpp3').classList.remove('notcode')
+    document.querySelector('#cpp4').classList.remove('notcode')
+
+}
+    else console.log('false')
+*/

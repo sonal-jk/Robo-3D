@@ -558,8 +558,8 @@ footer img{
 
 
 .snip{
-    width: 80%;
-    margin:40% 10%;
+   
+    margin:2%;
 
 
 }
@@ -618,27 +618,86 @@ pre{
     top: -2%;
     right: 2%;
 }
+.code{
+    height: 400px !important;
+    overflow: scroll;
+}
 .card1{
 
 #java1 .but-div{
-    top: -3.4%;
+    top: 0.9%;
 }
 #cpp1 .but-div{
-    top: -3.8%;
+    top: 1%;
 }
 #py1 .but-div{
-    top: -4.7%;
-}}
+    top: 1.2%;
+}
+#asm1 .but-div{
+    top: 0.5%;
+}
+}
 
 .card2{
     #java2 .but-div{
-        top: -2.5%;
+        top: 0.9%;
     }
     #cpp2 .but-div{
-        top: -3%;
+        top: 1.1%;
     }
     #py2 .but-div{
-        top: -3.7%;
+        top: 1.3%;
+    }
+    #asm2 .but-div{
+        top: 0.8%;
+    }
+
+}
+
+.card3{
+    #java3 .but-div{
+        top: 0.7%;
+    }
+    #cpp3 .but-div{
+        top: 1.4%;
+    }
+    #py3 .but-div{
+        top: 1%;
+    }
+    #asm3 .but-div{
+        top: 0.55%;
+    }
+
+}
+
+.card4{
+    #java4 .but-div{
+        top: 0.75%;
+    }
+    #cpp4 .but-div{
+        top: 1.5%;
+    }
+    #py4 .but-div{
+        top: 1.1%;
+    }
+    #asm4 .but-div{
+        top: 0.6%;
+    }
+
+}
+
+.card5{
+    #java5 .but-div{
+        top: 0.75%;
+    }
+    #cpp5 .but-div{
+        top: 1.5%;
+    }
+    #py5 .but-div{
+        top: 1.1%;
+    }
+    #asm5 .but-div{
+        top: 0.6%;
     }
 
 }
@@ -686,9 +745,37 @@ pre{
     display: block !important;
 }
 .notcode{
-    display: none ;
+    display: none !important;
 }
 
+.resource-cont{
+    margin: 4%;
+    h1{
+        text-align: center;
+        
+        padding-bottom: 15px;
+        text-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+    .box-cont{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(450px,1fr));
+        gap: 2%;
+        .box{
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            background: #ffffff;
+            text-align: center;
+            padding: 0px 0px;
+            height: 600px;
+
+        }
+        .box:hover{
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+            transform: scale(1.02);
+        }
+    }
+    
+}
 @media (min-width:763px) and (max-width:996px){
     .credit{
         margin: 0px 0.5%;

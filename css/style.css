@@ -724,6 +724,15 @@ pre{
         margin: 0px 0.5%;
         height:450px;
     }
+    .resource-cont{
+        margin:8% 6%;
+        .box-cont{
+            grid-template-columns: repeat(auto-fit,minmax(40%,1fr));
+            gap: 2%;
+        }
+    }
+  
+
 
 }
 
@@ -894,6 +903,10 @@ pre{
         width: 100%;
         margin: 5%;
     }
+    .resource-cont{
+        margin:8% 10%;
+    }
+
 
 /*
   .blur{

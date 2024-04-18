@@ -93,36 +93,36 @@
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp1" >
                 <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-        #define NUM_FINGERS 5  // Number of fingers
-        #define DELAY_TIME 500 // Delay time between movements in milliseconds
-                        Servo fingers[NUM_FINGERS]; // Array to hold servo objects for each finger
-                        // Pin numbers for each finger servo
-                        int fingerPins[NUM_FINGERS] = {2, 3, 4, 5, 6}; // Example pin numbers, adjust as needed
-                        void setup() {
-                          // Attach each servo to its respective pin
-                          for (int i = 0; i < NUM_FINGERS; i++) {
-                            fingers[i].attach(fingerPins[i]);
-                          }
-                        }
-                        void loop() {
-                          // Move each finger sequentially
-                          moveFingersForward();
-                          delay(DELAY_TIME);
-                          moveFingersBackward();
-                          delay(DELAY_TIME);
-                        }
-                        // Function to move fingers forward (closing)
-                        void moveFingersForward() {
-                          for (int i = 0; i < NUM_FINGERS; i++) {
-                            fingers[i].write(0); // Adjust angle as needed for closed position
-                          }
-                        }
-                        // Function to move fingers backward (opening)
-                        void moveFingersBackward() {
-                          for (int i = 0; i < NUM_FINGERS; i++) {
-                            fingers[i].write(180); // Adjust angle as needed for open position
-                          }
-                        }
+#define NUM_FINGERS 5  // Number of fingers
+#define DELAY_TIME 500 // Delay time between movements in milliseconds
+Servo fingers[NUM_FINGERS]; // Array to hold servo objects for each finger
+// Pin numbers for each finger servo
+int fingerPins[NUM_FINGERS] = {2, 3, 4, 5, 6}; // Example pin numbers, adjust as needed
+void setup() {
+    // Attach each servo to its respective pin
+    for (int i = 0; i < NUM_FINGERS; i++) {
+         fingers[i].attach(fingerPins[i]);
+    }
+}
+void loop() {
+    // Move each finger sequentially
+    moveFingersForward();
+    delay(DELAY_TIME);
+    moveFingersBackward();
+     delay(DELAY_TIME);
+}
+// Function to move fingers forward (closing)
+void moveFingersForward() {
+    for (int i = 0; i < NUM_FINGERS; i++) {
+        fingers[i].write(0); // Adjust angle as needed for closed position
+    }
+}
+// Function to move fingers backward (opening)
+void moveFingersBackward() {
+    for (int i = 0; i < NUM_FINGERS; i++) {
+        fingers[i].write(180); // Adjust angle as needed for open position
+    }
+}
                         
                 </code></pre>
                 <div class="but-div">
@@ -131,38 +131,39 @@
         </div>
         <div class="content-code java-code" id="java1">
                 <pre><code class="language-Java">import java.util.concurrent.TimeUnit;
-                    import edu.wpi.first.wpilibj.Servo;
-                    public class FingerControl {
-                        private static final int NUM_FINGERS = 5;
-                        private static final int DELAY_TIME = 500; // Delay time between movements in milliseconds
-                        public static void main(String[] args) throws InterruptedException {
-                            Servo[] fingers = new Servo[NUM_FINGERS];
-                            int[] fingerPins = { 2, 3, 4, 5, 6 }; // Example pin numbers, adjust as needed
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_FINGERS; i++) {
-                                fingers[i] = new Servo(fingerPins[i]);
-                            }
-                            while (true) {
-                                // Move each finger sequentially
-                                moveFingersForward(fingers);
-                                TimeUnit.MILLISECONDS.sleep(DELAY_TIME);
-                                moveFingersBackward(fingers);
-                                TimeUnit.MILLISECONDS.sleep(DELAY_TIME);
-                            }
-                        }
-                        // Function to move fingers forward (closing)
-                        private static void moveFingersForward(Servo[] fingers) {
-                            for (int i = 0; i < NUM_FINGERS; i++) {
-                                fingers[i].setAngle(0); // Adjust angle as needed for closed position
-                            }
-                        }
-                        // Function to move fingers backward (opening)
-                        private static void moveFingersBackward(Servo[] fingers) {
-                            for (int i = 0; i < NUM_FINGERS; i++) {
-                                fingers[i].setAngle(180); // Adjust angle as needed for open position
-                            }
-                        }
-                    }
+import edu.wpi.first.wpilibj.Servo;
+public class FingerControl {
+    private static final int NUM_FINGERS = 5;
+    private static final int DELAY_TIME = 500; // Delay time between movements in milliseconds
+    public static void main(String[] args) throws InterruptedException {
+        Servo[] fingers = new Servo[NUM_FINGERS];
+        int[] fingerPins = { 2, 3, 4, 5, 6 }; // Example pin numbers, adjust as needed
+        // Attach each servo to its respective pin
+        for (int i = 0; i < NUM_FINGERS; i++) {
+            fingers[i] = new Servo(fingerPins[i]);
+        }
+        while (true) {
+            // Move each finger sequentially
+            moveFingersForward(fingers);
+            TimeUnit.MILLISECONDS.sleep(DELAY_TIME);
+            moveFingersBackward(fingers);
+            TimeUnit.MILLISECONDS.sleep(DELAY_TIME);
+        }
+    }
+    // Function to move fingers forward (closing)
+    private static void moveFingersForward(Servo[] fingers) {
+        for (int i = 0; i < NUM_FINGERS; i++) {
+             fingers[i].setAngle(0); // Adjust angle as needed for closed position
+        }
+    }
+    // Function to move fingers backward (opening)
+    private static void moveFingersBackward(Servo[] fingers) {
+        for (int i = 0; i < NUM_FINGERS; i++) {
+            fingers[i].setAngle(180); // Adjust angle as needed for open position
+        }
+    }
+}
+                    
                     
                    
                         
@@ -173,30 +174,31 @@
                 </div>
                   <div class="content-code py-code" id="py1">
                   <pre ><code class="language-py">import time
-                    import RPi.GPIO as GPIO
-                    NUM_FINGERS = 5
-                    DELAY_TIME = 0.5  # Delay time between movements in seconds
-             
-                    # Example pin numbers, adjust as needed
-                    finger_pins = [2, 3, 4, 5, 6]
-                    # Setup GPIO
-                    GPIO.setmode(GPIO.BCM)
-                    GPIO.setup(finger_pins, GPIO.OUT)
-                   def move_fingers_forward():
-                       for pin in finger_pins:
-                           GPIO.output(pin, GPIO.LOW)  # Adjust angle as needed for closed position
-                   def move_fingers_backward():
-                       for pin in finger_pins:
-                           GPIO.output(pin, GPIO.HIGH)  # Adjust angle as needed for open position
-                   try:
-                       while True:
-                           # Move each finger sequentially
-                           move_fingers_forward()
-                           time.sleep(DELAY_TIME)
-                           move_fingers_backward()
-                           time.sleep(DELAY_TIME)
-                   except KeyboardInterrupt:
-                       GPIO.cleanup()
+import RPi.GPIO as GPIO
+ NUM_FINGERS = 5
+DELAY_TIME = 0.5  # Delay time between movements in seconds
+                    
+# Example pin numbers, adjust as needed
+finger_pins = [2, 3, 4, 5, 6]
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(finger_pins, GPIO.OUT)
+def move_fingers_forward():
+    for pin in finger_pins:
+        GPIO.output(pin, GPIO.LOW)  # Adjust angle as needed for closed position
+def move_fingers_backward():
+    for pin in finger_pins:
+        GPIO.output(pin, GPIO.HIGH)  # Adjust angle as needed for open position
+try:
+while True:
+# Move each finger sequentially
+move_fingers_forward()
+time.sleep(DELAY_TIME)
+move_fingers_backward()
+time.sleep(DELAY_TIME)
+except KeyboardInterrupt:
+    GPIO.cleanup()
+                    
              
                    </code></pre>
                    <div class="but-div">
@@ -205,67 +207,68 @@
                   </div>
                   <div class="content-code asm-code" id="asm1">
                    <pre ><code class="language-asm">; Define constants
-            NUM_FINGERS  EQU 5          ; Number of fingers
-            DELAY_TIME   EQU 500        ; Delay time between movements in milliseconds
-            SERVO_PIN_1  EQU 2          ; Pin number for servo 1
-            SERVO_PIN_2  EQU 3          ; Pin number for servo 2
-            ; Define servo angles
-            SERVO_CLOSED EQU 0           ; Angle for closed position
-            SERVO_OPEN   EQU 180         ; Angle for open position
-            ; Define register usage
-            REG_DELAY    R0              ; Delay register
-            REG_COUNTER  R1              ; Loop counter register
-            REG_SERVO    R2              ; Servo angle register
-            ; Initialize
-            INIT:
-                ; Setup GPIO pins for servo control
-                GPIO_SETUP SERVO_PIN_1, OUTPUT
-                GPIO_SETUP SERVO_PIN_2, OUTPUT
-            
-            ; Main loop
-            MAIN_LOOP:
-                ; Move fingers forward (closing)
-                MOVE_FINGERS_FORWARD
-                ; Delay
-                MOV REG_DELAY, DELAY_TIME
-                CALL DELAY
-                ; Move fingers backward (opening)
-                MOVE_FINGERS_BACKWARD
-                ; Delay
-                MOV REG_DELAY, DELAY_TIME
-                CALL DELAY
-                ; Repeat
-                JMP MAIN_LOOP
-            ; Subroutine to move fingers forward (closing)
-            MOVE_FINGERS_FORWARD:
-                ; Set servo angle for each finger
-                MOV REG_SERVO, SERVO_CLOSED
-                FOR REG_COUNTER, 0, NUM_FINGERS-1
-                    ; Write servo angle to GPIO pin
-                    PWM_WRITE SERVO_PIN[REG_COUNTER], REG_SERVO
-                ENDFOR
-                RET
-            ; Subroutine to move fingers backward (opening)
-            MOVE_FINGERS_BACKWARD:
-                ; Set servo angle for each finger
-                MOV REG_SERVO, SERVO_OPEN
-                FOR REG_COUNTER, 0, NUM_FINGERS-1
-                    ; Write servo angle to GPIO pin
-                    PWM_WRITE SERVO_PIN[REG_COUNTER], REG_SERVO
-                ENDFOR
-                RET
-            ; Subroutine for delay
-            DELAY:
-                ; Loop for delay
-                DELAY_LOOP:
-                    ; Decrement delay register
-                    DEC REG_DELAY
-                    ; Check if delay complete
-                    BRZ DELAY_DONE
-                    ; Repeat delay loop
-                    JMP DELAY_LOOP
-                DELAY_DONE:
-                RET
+NUM_FINGERS  EQU 5          ; Number of fingers
+DELAY_TIME   EQU 500        ; Delay time between movements in milliseconds
+SERVO_PIN_1  EQU 2          ; Pin number for servo 1
+SERVO_PIN_2  EQU 3          ; Pin number for servo 2
+; Define servo angles
+SERVO_CLOSED EQU 0           ; Angle for closed position
+SERVO_OPEN   EQU 180         ; Angle for open position
+; Define register usage
+REG_DELAY    R0              ; Delay register
+ REG_COUNTER  R1              ; Loop counter register
+REG_SERVO    R2              ; Servo angle register
+; Initialize
+INIT:
+    ; Setup GPIO pins for servo control
+    GPIO_SETUP SERVO_PIN_1, OUTPUT
+    GPIO_SETUP SERVO_PIN_2, OUTPUT
+                    
+; Main loop
+ MAIN_LOOP:
+    ; Move fingers forward (closing)
+    MOVE_FINGERS_FORWARD
+    ; Delay
+    MOV REG_DELAY, DELAY_TIME
+    CALL DELAY
+    ; Move fingers backward (opening)
+    MOVE_FINGERS_BACKWARD
+    ; Delay
+    MOV REG_DELAY, DELAY_TIME
+    CALL DELAY
+    ; Repeat
+    JMP MAIN_LOOP
+; Subroutine to move fingers forward (closing)
+MOVE_FINGERS_FORWARD:
+    ; Set servo angle for each finger
+    MOV REG_SERVO, SERVO_CLOSED
+    FOR REG_COUNTER, 0, NUM_FINGERS-1
+        ; Write servo angle to GPIO pin
+        PWM_WRITE SERVO_PIN[REG_COUNTER], REG_SERVO
+    ENDFOR
+    RET
+; Subroutine to move fingers backward (opening)
+MOVE_FINGERS_BACKWARD:
+    ; Set servo angle for each finger
+    MOV REG_SERVO, SERVO_OPEN
+    FOR REG_COUNTER, 0, NUM_FINGERS-1
+        ; Write servo angle to GPIO pin
+        PWM_WRITE SERVO_PIN[REG_COUNTER], REG_SERVO
+    ENDFOR
+    RET
+; Subroutine for delay
+DELAY:
+    ; Loop for delay
+    DELAY_LOOP:
+        ; Decrement delay register
+        DEC REG_DELAY
+        ; Check if delay complete
+        BRZ DELAY_DONE
+        ; Repeat delay loop
+        JMP DELAY_LOOP
+    DELAY_DONE:
+    RET
+                    
             
                 </code></pre>
                 <div class="but-div">
@@ -293,47 +296,47 @@
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp2">
                 <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                        #define NUM_LEGS 2      // Number of legs
-                        #define NUM_JOINTS 3    // Number of joints per leg
-                        #define DELAY_TIME 500  // Delay time between movements in milliseconds
-                        Servo legs[NUM_LEGS][NUM_JOINTS]; // Array to hold servo objects for each leg and joint
-                        // Pin numbers for each leg joint servo
-                        int legPins[NUM_LEGS][NUM_JOINTS] = {
-                          {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                          {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                        };
-                        void setup() {
-                          // Attach each servo to its respective pin
-                          for (int i = 0; i < NUM_LEGS; i++) {
-                            for (int j = 0; j < NUM_JOINTS; j++) {
-                              legs[i][j].attach(legPins[i][j]);
-                            }
-                          }
-                        }
-                        void loop() {
-                          // Move legs forward
-                          moveLegsForward();
-                          delay(DELAY_TIME);
-                          // Move legs backward
-                          moveLegsBackward();
-                          delay(DELAY_TIME);
-                        }
-                        // Function to move legs forward
-                        void moveLegsForward() {
-                          for (int i = 0; i < NUM_LEGS; i++) {
-                            for (int j = 0; j < NUM_JOINTS; j++) {
-                              legs[i][j].write(0); // Adjust angle as needed for forward movement
-                            }
-                          }
-                        }
-                        // Function to move legs backward
-                        void moveLegsBackward() {
-                          for (int i = 0; i < NUM_LEGS; i++) {
-                            for (int j = 0; j < NUM_JOINTS; j++) {
-                              legs[i][j].write(180); // Adjust angle as needed for backward movement
-                            }
-                          }
-                        }
+#define NUM_LEGS 2      // Number of legs
+#define NUM_JOINTS 3    // Number of joints per leg
+#define DELAY_TIME 500  // Delay time between movements in milliseconds
+Servo legs[NUM_LEGS][NUM_JOINTS]; // Array to hold servo objects for each leg and joint
+// Pin numbers for each leg joint servo
+int legPins[NUM_LEGS][NUM_JOINTS] = {
+    {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
+     {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
+};
+void setup() {
+    // Attach each servo to its respective pin
+    for (int i = 0; i < NUM_LEGS; i++) {
+        for (int j = 0; j < NUM_JOINTS; j++) {
+            legs[i][j].attach(legPins[i][j]);
+        }
+    }
+}
+void loop() {
+    // Move legs forward
+    moveLegsForward();
+    delay(DELAY_TIME);
+    // Move legs backward
+    moveLegsBackward();
+     delay(DELAY_TIME);
+}
+// Function to move legs forward
+void moveLegsForward() {
+    for (int i = 0; i < NUM_LEGS; i++) {
+        for (int j = 0; j < NUM_JOINTS; j++) {
+            legs[i][j].write(0); // Adjust angle as needed for forward movement
+        }
+    }
+}
+// Function to move legs backward
+ void moveLegsBackward() {
+    for (int i = 0; i < NUM_LEGS; i++) {
+         for (int j = 0; j < NUM_JOINTS; j++) {
+            legs[i][j].write(180); // Adjust angle as needed for backward movement
+        }
+    }
+}
                         
                             
                 </code></pre>
@@ -343,60 +346,59 @@
         </div>
         <div class="content-code java-code" id="java2">
                 <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
-                   
-                        
+public class LegControl {
+    private static final int NUM_LEGS = 2;      // Number of legs
+    private static final int NUM_JOINTS = 3;    // Number of joints per leg
+    private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
+    public static void main(String[] args) {
+        Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
+        int[][] legPins = {
+            {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
+            {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
+        };
+        // Attach each servo to its respective pin
+        for (int i = 0; i < NUM_LEGS; i++) {
+            for (int j = 0; j < NUM_JOINTS; j++) {
+                legs[i][j] = new Servo(legPins[i][j]);
+            }
+        }
+        while (true) {
+            // Move legs forward
+            moveLegsForward(legs);
+            delay(DELAY_TIME);
+            // Move legs backward
+            moveLegsBackward(legs);
+            delay(DELAY_TIME);
+        }
+    }
+    // Function to move legs forward
+    private static void moveLegsForward(Servo[][] legs) {
+        for (int i = 0; i < NUM_LEGS; i++) {
+            for (int j = 0; j < NUM_JOINTS; j++) {
+                legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
+            }
+        }
+    }
+    // Function to move legs backward
+    private static void moveLegsBackward(Servo[][] legs) {
+        for (int i = 0; i < NUM_LEGS; i++) {
+            for (int j = 0; j < NUM_JOINTS; j++) {
+                legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
+            }
+        }
+    }
+    // Function to emulate delay
+    private static void delay(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } 
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
                   </code> </pre>
                   <div class="but-div">
                   <button  data-clipboard-target="#java2" id="copy2-2"  class="copy-button copy-but2">
@@ -404,40 +406,40 @@
                 </div>
                   <div class="content-code py-code" id="py2">
                   <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
+import RPi.GPIO as GPIO
+NUM_LEGS = 2      # Number of legs
+NUM_JOINTS = 3    # Number of joints per leg
+DELAY_TIME = 0.5  # Delay time between movements in seconds
+# Pin numbers for each leg joint servo
+leg_pins = [
+    [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
+    [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
+]
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+for leg in leg_pins:
+    for pin in leg:
+        GPIO.setup(pin, GPIO.OUT)
+# Function to move legs forward
+def move_legs_forward():
+    for leg in leg_pins:
+        for pin in leg:
+            GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
+# Function to move legs backward
+def move_legs_backward():
+    for leg in leg_pins:
+        for pin in leg:
+            GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
+try:
+    while True:
+        # Move legs forward
+        move_legs_forward()
+        sleep(DELAY_TIME)
+        # Move legs backward
+        move_legs_backward()
+        sleep(DELAY_TIME)
+ except KeyboardInterrupt:
+    GPIO.cleanup()
         
              
                    </code></pre>
@@ -447,71 +449,71 @@
                   </div>
                   <div class="content-code asm-code" id="asm2">
                    <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
+NUM_LEGS        EQU 2          ; Number of legs
+NUM_JOINTS      EQU 3          ; Number of joints per leg
+DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
+; Define servo angles
+SERVO_FORWARD   EQU 0           ; Angle for forward movement
+SERVO_BACKWARD  EQU 180         ; Angle for backward movement
+; Define register usage
+REG_DELAY       R0              ; Delay register
+REG_COUNTER     R1              ; Loop counter register
+REG_SERVO_ANGLE R2              ; Servo angle register
+; Define pin numbers for each leg joint servo
+LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
+    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
+    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
+; Initialize
+INIT:
+    ; Setup GPIO pins for leg joint servos
+    LDR R1, =LEG_PINS
+    MOV R2, #NUM_LEGS
+INIT_LOOP:
+    LDRB R3, [R1], #1
+    MOV R0, #1
+   ; Setup GPIO pin for servo control
+    GPIO_SETUP R3, OUTPUT
+    SUBS R2, R2, R0
+     BNE INIT_LOOP
+; Main loop
+MAIN_LOOP:
+    ; Move legs forward
+    MOVE_LEGS_FORWARD
+    ; Delay
+    MOV R0, #DELAY_TIME
+    CALL DELAY
+    ; Move legs backward
+    MOVE_LEGS_BACKWARD
+    ; Delay
+    MOV R0, #DELAY_TIME
+    CALL DELAY
+    ; Repeat
+    B MAIN_LOOP
+ Subroutine to move legs forward
+MOVE_LEGS_FORWARD:
+    ; Set servo angle for each leg joint
+    LDR R1, =SERVO_FORWARD
+    MOV R2, #NUM_LEGS
+     MOVE_FORWARD_LOOP:
+     ; Set servo angle
+     LDRB R3, [R1], #1
+     FOR R4, 0, NUM_JOINTS-1
+         ; Write servo angle to GPIO pin
+          PWM_WRITE [R3+R4], R1
+      ENDFOR
+      SUBS R2, R2, #1
+      BNE MOVE_FORWARD_LOOP
+       RET
+; Subroutine to move legs backward
+MOVE_LEGS_BACKWARD:
+    ; Set servo angle for each leg joint
+    LDR R1, =SERVO_BACKWARD
+    MOV R2, #NUM_LEGS
+    MOVE_BACKWARD_LOOP:
+    ; Set servo angle
+    LDRB R3, [R1], #1
+    FOR R4, 0, NUM_JOINTS-1
+        ; Write servo angle to GPIO pin
                            
                         
                 </code></pre>
@@ -540,31 +542,29 @@
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp3">
                 <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
-                    
-                        
-                            
+#define NECK_PIN 2       // Pin number for the neck servo
+#define NECK_DELAY 500   // Delay time between movements in milliseconds
+Servo neck;  // Servo object for the neck
+void setup() {
+    neck.attach(NECK_PIN);  // Attach the servo to the pin
+}
+void loop() {
+    // Move neck left
+    moveNeckLeft();
+    delay(NECK_DELAY);
+    // Move neck right
+    moveNeckRight();
+    delay(NECK_DELAY);
+}
+// Function to move the neck left
+void moveNeckLeft() {
+    neck.write(0); // Adjust angle as needed for left movement
+}
+// Function to move the neck right
+void moveNeckRight() {
+    neck.write(180); // Adjust angle as needed for right movement
+}
+             
                 </code></pre>
                 <div class="but-div">
                 <button  data-clipboard-target="#cpp3" id="copy3-1"  class="copy-button copy-but1">
@@ -572,59 +572,38 @@
         </div>
         <div class="content-code java-code" id="java3">
                 <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
+public class NeckControl {
+    private static final int NECK_PIN = 2;       // Pin number for the neck servo
+    private static final int NECK_DELAY = 500;   // Delay time between movements in milliseconds
+    public static void main(String[] args) {
+        Servo neck = new Servo(NECK_PIN);  // Servo object for the neck
+        while (true) {
+            // Move neck left
+            moveNeckLeft(neck);
+            delay(NECK_DELAY);
+            // Move neck right
+            moveNeckRight(neck);
+            delay(NECK_DELAY);
+        }
+    }
+    // Function to move the neck left
+    private static void moveNeckLeft(Servo neck) {
+        neck.setAngle(0); // Adjust angle as needed for left movement
+    }
+    // Function to move the neck right
+    private static void moveNeckRight(Servo neck) {
+        neck.setAngle(180); // Adjust angle as needed for right movement
+    }
+    // Function to emulate delay
+    private static void delay(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+         }
+     }
+}
                     
-                    
-                   
                         
                   </code> </pre>
                   <div class="but-div">
@@ -633,41 +612,32 @@
                 </div>
                   <div class="content-code py-code" id="py3">
                   <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-        
+import RPi.GPIO as GPIO
+NECK_PIN = 2       # Pin number for the neck servo
+NECK_DELAY = 0.5   # Delay time between movements in seconds
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(NECK_PIN, GPIO.OUT)
+neck = GPIO.PWM(NECK_PIN, 50) # GPIO pin for PWM with frequency 50Hz (standard for servos)
+neck.start(0) # Start PWM with 0 duty cycle
+# Function to move the neck left
+def move_neck_left():
+    neck.ChangeDutyCycle(2.5)  # Adjust duty cycle for left movement
+    sleep(0.5)
+# Function to move the neck right
+def move_neck_right():
+    neck.ChangeDutyCycle(12.5)  # Adjust duty cycle for right movement
+    sleep(0.5)
+try:
+    while True:
+        # Move neck left
+        move_neck_left()
+        # Move neck right
+        move_neck_right()
+except KeyboardInterrupt:
+    neck.stop()
+    GPIO.cleanup()
+                    
              
                    </code></pre>
                    <div class="but-div">
@@ -675,73 +645,57 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm3">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
+<pre ><code class="language-asm">; Define constants
+NECK_PIN        EQU 2          ; Pin number for the neck servo
+NECK_DELAY      EQU 500        ; Delay time between movements in milliseconds
+; Define register usage
+REG_DELAY       R0              ; Delay register
+REG_SERVO_ANGLE R1              ; Servo angle register
+; Initialize
+INIT:
+    ; Setup GPIO pin for neck servo control
+    GPIO_SETUP NECK_PIN, OUTPUT
+; Main loop
+MAIN_LOOP:
+    ; Move neck left
+    MOVE_NECK_LEFT
+    ; Delay
+    MOV R0, #NECK_DELAY
+    CALL DELAY
+    ; Move neck right
+    MOVE_NECK_RIGHT
+    ; Delay
+    MOV R0, #NECK_DELAY
+    CALL DELAY
+    ; Repeat
+    B MAIN_LOOP
+; Subroutine to move the neck left
+MOVE_NECK_LEFT:
+    ; Set servo angle for left movement
+    MOV R1, #0  ; Adjust angle as needed for left movement
+    ; Write servo angle to GPIO pin
+    PWM_WRITE NECK_PIN, R1
+    RET
+; Subroutine to move the neck right
+MOVE_NECK_RIGHT:
+    ; Set servo angle for right movement
+    MOV R1, #180  ; Adjust angle as needed for right movement
+    ; Write servo angle to GPIO pin
+    PWM_WRITE NECK_PIN, R1
+    RET
+; Subroutine for delay
+DELAY:
+    ; Loop for delay
+    DELAY_LOOP:
+        ; Decrement delay register
+        SUBS R0, R0, #1
+        ; Check if delay complete
+        BEQ DELAY_DONE
+        ; Repeat delay loop
+        B DELAY_LOOP
+    DELAY_DONE:
+    RET
+                         
                         
                 </code></pre>
                 <div class="but-div">
@@ -768,31 +722,23 @@
                 </div>
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp4">
-                <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
-                    
-                        
+<pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
+#define ESC_PIN 9        // Pin number connected to ESC signal wire
+#define THROTTLE_MIN 1000  // Minimum throttle value (microseconds)
+#define THROTTLE_MAX 2000  // Maximum throttle value (microseconds)
+Servo esc;  // Servo object for the ESC
+void setup() {
+  esc.attach(ESC_PIN);  // Attach the ESC signal wire to the specified pin
+}
+void loop() {
+  // Set throttle to minimum (motor off)
+  esc.writeMicroseconds(THROTTLE_MIN);
+  delay(2000);  // Wait for 2 seconds
+  // Set throttle to maximum (full speed)
+  esc.writeMicroseconds(THROTTLE_MAX);
+  delay(2000);  // Wait for 2 seconds
+}
+
                             
                 </code></pre>
                 <div class="but-div">
@@ -800,59 +746,36 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
         </div>
         <div class="content-code java-code" id="java4">
-                <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
+<pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
+public class ESCControl {
+    private static final int ESC_PIN = 9;        // Pin number connected to ESC signal wire
+    private static final int THROTTLE_MIN = 1000;  // Minimum throttle value (microseconds)
+    private static final int THROTTLE_MAX = 2000;  // Maximum throttle value (microseconds)
+    public static void main(String[] args) {
+        Servo esc = new Servo(ESC_PIN);  // Servo object for the ESC
+        while (true) {
+            // Set throttle to minimum (motor off)
+            setThrottle(esc, THROTTLE_MIN);
+            delay(2000);  // Wait for 2 seconds
+            // Set throttle to maximum (full speed)
+            setThrottle(esc, THROTTLE_MAX);
+            delay(2000);  // Wait for 2 seconds
+        }
+    }
+    // Function to set throttle
+    private static void setThrottle(Servo esc, int microseconds) {
+        esc.setPWM(microseconds); // Set PWM pulse width in microseconds
+    }
+    // Function to emulate delay
+    private static void delay(int milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
                    
                         
                   </code> </pre>
@@ -861,41 +784,50 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                 </div>
                   <div class="content-code py-code" id="py4">
-                  <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
+<pre ><code class="language-py">from time import sleep
+import RPi.GPIO as GPIO
+from time import sleep
+import RPi.GPIO as GPIO
+ESC_PIN = 9         # Pin number connected to ESC signal wire
+THROTTLE_MIN = 1000  # Minimum throttle value (microseconds)
+THROTTLE_MAX = 2000  # Maximum throttle value (microseconds)
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(ESC_PIN, GPIO.OUT)
+esc = GPIO.PWM(ESC_PIN, 50) # GPIO pin for PWM with frequency 50Hz (standard for ESCs)
+esc.start(0) # Start PWM with 0 duty cycle
+try:
+    while True:
+        # Set throttle to minimum (motor off)
+        esc.ChangeDutyCycle(THROTTLE_MIN / 10)  # Convert microseconds to percentage
+        sleep(2)  # Wait for 2 seconds
+        # Set throttle to maximum (full speed)
+        esc.ChangeDutyCycle(THROTTLE_MAX / 10)  # Convert microseconds to percentage
+        sleep(2)  # Wait for 2 seconds
+
+except KeyboardInterrupt:
+    esc.stop()
+    GPIO.cleanup()
+ESC_PIN = 9         # Pin number connected to ESC signal wire
+THROTTLE_MIN = 1000  # Minimum throttle value (microseconds)
+THROTTLE_MAX = 2000  # Maximum throttle value (microseconds)
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(ESC_PIN, GPIO.OUT)
+esc = GPIO.PWM(ESC_PIN, 50) # GPIO pin for PWM with frequency 50Hz (standard for ESCs)
+esc.start(0) # Start PWM with 0 duty cycle
+try:
+    while True:
+        # Set throttle to minimum (motor off)
+        esc.ChangeDutyCycle(THROTTLE_MIN / 10)  # Convert microseconds to percentage
+        sleep(2)  # Wait for 2 seconds
+        # Set throttle to maximum (full speed)
+        esc.ChangeDutyCycle(THROTTLE_MAX / 10)  # Convert microseconds to percentage
+        sleep(2)  # Wait for 2 seconds
+except KeyboardInterrupt:
+    esc.stop()
+    GPIO.cleanup()
+
         
              
                    </code></pre>
@@ -904,74 +836,51 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm4">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
-                        
+<pre ><code class="language-asm">; Define constants
+ESC_PIN         EQU 9          ; Pin number connected to ESC signal wire
+THROTTLE_MIN    EQU 1000       ; Minimum throttle value (microseconds)
+THROTTLE_MAX    EQU 2000       ; Maximum throttle value (microseconds)
+; Define register usage
+REG_DELAY       R0              ; Delay register
+REG_THROTTLE    R1              ; Throttle register
+; Initialize
+INIT:
+    ; Setup GPIO pin for ESC control
+    GPIO_SETUP ESC_PIN, OUTPUT
+; Main loop
+MAIN_LOOP:
+    ; Set throttle to minimum (motor off)
+    MOV R1, #THROTTLE_MIN
+    SET_THROTTLE
+    ; Delay
+    MOV R0, #2000
+    CALL DELAY
+    ; Set throttle to maximum (full speed)
+    MOV R1, #THROTTLE_MAX
+    SET_THROTTLE
+    ; Delay
+    MOV R0, #2000
+    CALL DELAY
+    ; Repeat
+    B MAIN_LOOP
+; Subroutine to set throttle
+SET_THROTTLE:
+    ; Write PWM pulse width to GPIO pin
+    PWM_WRITE ESC_PIN, R1
+    RET
+; Subroutine for delay
+DELAY:
+    ; Loop for delay
+    DELAY_LOOP:
+        ; Decrement delay register
+        SUBS R0, R0, #1
+        ; Check if delay complete
+        BEQ DELAY_DONE
+        ; Repeat delay loop
+        B DELAY_LOOP
+    DELAY_DONE:
+    RET
+
                 </code></pre>
                 <div class="but-div">
                 <button data-clipboard-target="#asm4" id="copy4-4"  class="copy-button copy-but4">
@@ -997,91 +906,162 @@
                 </div>
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp5">
-                <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
+<pre ><code id="text" class="language-cpp">#include &lt;Arduino.h&gt;
+#include &lt;Wire.h&gt;
+#include &lt;ArduCAM.h&gt;
+// ArduCAM pin definitions
+#define CS_PIN    10 // Chip select pin
+#define RESET_PIN 9  // Reset pin
+// Initialize ArduCAM object
+ArduCAM arduCAM(OV2640, CS_PIN);
+void setup() {
+  Serial.begin(115200);
+  while (!Serial);
+  // Initialize I2C communication
+  Wire.begin();
+  arduCAM.write_reg(ARDUCHIP_TEST1, 0x55); // Test connection to ArduCAM module
+  // Initialize ArduCAM
+  while (arduCAM.initialize() != 0) {
+    Serial.println(F("Failed to initialize ArduCAM!"));
+    delay(1000);
+  }
+  Serial.println(F("ArduCAM initialized!"));
+
+  // Reset ArduCAM
+  arduCAM.write_reg(ARDUCHIP_FRAMES, FRAMES_NUM);
+  arduCAM.clear_fifo_flag();
+}
+void loop() {
+  captureImage();
+  delay(5000); // Capture an image every 5 seconds
+}
+void captureImage() {
+  Serial.println(F("Capturing image..."));
+  arduCAM.flush_fifo();
+  arduCAM.clear_fifo_flag();
+  arduCAM.start_capture();
+  // Wait for image to be captured
+  while (!arduCAM.get_bit(ARDUCHIP_TRIG, CAP_DONE_MASK));
+  // Get image length
+  uint32_t length = arduCAM.read_fifo_length();
+  Serial.print(F("Image length: "));
+  Serial.println(length);
+  if (length >= MAX_FIFO_SIZE) {
+    Serial.println(F("FIFO overflow!"));
+    return;
+  }
+  // Read image data from FIFO
+  uint8_t image[length];
+  arduCAM.read_fifo(image, length);
+  // Save image to SD card (optional)
+  // e.g., SD.write(image, length);
+  Serial.println(F("Image captured!"));
+}
+    
                     
-                        
-                            
                 </code></pre>
                 <div class="but-div">
                 <button  data-clipboard-target="#cpp5" id="copy5-1"  class="copy-button copy-but1">
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
         </div>
         <div class="content-code java-code" id="java5">
-                <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
+<pre><code class="language-Java">import java.util.concurrent.TimeUnit;
+public class ArduCAM {
+    private static final int ARDUCHIP_TEST1 = 0x00;
+    private static final int ARDUCHIP_FRAMES = 0x04;
+    private static final int ARDUCHIP_TRIG = 0x41;
+    private static final int CAP_DONE_MASK = 0x08;
+    private static final int FRAMES_NUM = 0x00;
+    private static final int MAX_FIFO_SIZE = 0x5FFFFF;  // Maximum FIFO size for OV2640
+    private int csPin;
+    public ArduCAM(int ovType, int csPin) {
+        this.csPin = csPin;
+    }
+    public void writeReg(int regAddr, int regData) {
+        // Implementation needed
+    }
+    public int initialize() {
+        writeReg(ARDUCHIP_TEST1, 0x55); // Test connection to ArduCAM module
+        return 0; // Successful initialization
+    }
+    public void clearFifoFlag() {
+        // Implementation needed
+    }
+    public void flushFifo() {
+        // Implementation needed
+    }
+    public void startCapture() {
+        // Implementation needed
+    }
+
+    public boolean getBit(int regAddr, int mask) {
+        // Implementation needed
+        return false;
+    }
+    public int readFifoLength() {
+        // Implementation needed
+        return 0;
+    }
+    public byte[] readFifo(int length) {
+        // Implementation needed
+        return new byte[length];
+    }
+    public static void main(String[] args) {
+        // ArduCAM pin definitions
+        int CS_PIN = 10;  // Chip select pin
+        int RESET_PIN = 9; // Reset pin
+        // Initialize ArduCAM object
+        ArduCAM arduCAM = new ArduCAM(0, CS_PIN);
+        // Main loop
+        while (true) {
+            // Initialize ArduCAM
+            while (arduCAM.initialize() != 0) {
+                System.out.println("Failed to initialize ArduCAM!");
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            System.out.println("ArduCAM initialized!");
+            // Reset ArduCAM
+            arduCAM.writeReg(ARDUCHIP_FRAMES, FRAMES_NUM);
+            arduCAM.clearFifoFlag();
+            // Capture an image
+            captureImage(arduCAM);
+            // Delay for 5 seconds
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    // Function to capture an image
+    private static void captureImage(ArduCAM arduCAM) {
+        System.out.println("Capturing image...");
+        arduCAM.flushFifo();
+        arduCAM.clearFifoFlag();
+        arduCAM.startCapture();
+        // Wait for image to be captured
+        while (!arduCAM.getBit(ARDUCHIP_TRIG, CAP_DONE_MASK)) {
+            // Wait
+        }
+        // Get image length
+        int length = arduCAM.readFifoLength();
+        System.out.println("Image length: " + length);
+        if (length >= MAX_FIFO_SIZE) {
+            System.out.println("FIFO overflow!");
+            return;
+        }
+        // Read image data from FIFO
+        byte[] image = arduCAM.readFifo(length);
+        // Save image to SD card (optional)
+        // e.g., SD.write(image, length);
+        System.out.println("Image captured!");
+    }
+}
+
                    
                         
                   </code> </pre>
@@ -1090,41 +1070,81 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                 </div>
                   <div class="content-code py-code" id="py5">
-                  <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
+<pre ><code class="language-py">import time
+import smbus
+import numpy as np
+# ArduCAM pin definitions
+CS_PIN = 10  # Chip select pin
+RESET_PIN = 9  # Reset pin
+# ArduCAM constants
+ARDUCHIP_TEST1 = 0x00
+ARDUCHIP_FRAMES = 0x04
+ARDUCHIP_TRIG = 0x41
+CAP_DONE_MASK = 0x08
+FRAMES_NUM = 0x00
+MAX_FIFO_SIZE = 0x5FFFFF  # Maximum FIFO size for OV2640
+# Initialize ArduCAM object
+class ArduCAM:
+    def __init__(self, ov_type, cs_pin):
+        self.cs_pin = cs_pin
+        self.bus = smbus.SMBus(1)  # I2C bus number
+        self.address = 0x30  # ArduCAM I2C address
+    def write_reg(self, reg_addr, reg_data):
+        self.bus.write_byte_data(self.address, reg_addr, reg_data)
+    def initialize(self):
+        self.write_reg(ARDUCHIP_TEST1, 0x55)  # Test connection to ArduCAM module
+        return 0  # Successful initialization
+    def clear_fifo_flag(self):
+        pass  # Implementation needed
+    def flush_fifo(self):
+        pass  # Implementation needed
+    def start_capture(self):
+        pass  # Implementation needed
+    def get_bit(self, reg_addr, mask):
+        pass  # Implementation needed
+    def read_fifo_length(self):
+        pass  # Implementation needed
+    def read_fifo(self, length):
+        pass  # Implementation needed
+# Initialize ArduCAM object
+arduCAM = ArduCAM("OV2640", CS_PIN)
+# Main function
+def main():
+    # Initialize ArduCAM
+    while arduCAM.initialize() != 0:
+        print("Failed to initialize ArduCAM!")
+        time.sleep(1)
+    print("ArduCAM initialized!")
+    # Reset ArduCAM
+    arduCAM.write_reg(ARDUCHIP_FRAMES, FRAMES_NUM)
+    arduCAM.clear_fifo_flag()
+    # Main loop
+    while True:
+        capture_image()
+        time.sleep(5)  # Capture an image every 5 seconds
+# Function to capture an image
+def capture_image():
+    print("Capturing image...")
+    arduCAM.flush_fifo()
+    arduCAM.clear_fifo_flag()
+    arduCAM.start_capture()
+    # Wait for image to be captured
+    while not arduCAM.get_bit(ARDUCHIP_TRIG, CAP_DONE_MASK):
+        pass
+    # Get image length
+    length = arduCAM.read_fifo_length()
+    print("Image length:", length)
+    if length >= MAX_FIFO_SIZE:
+        print("FIFO overflow!")
+        return
+    # Read image data from FIFO
+    image = arduCAM.read_fifo(length)
+    # Save image to SD card (optional)
+    # e.g., SD.write(image, length)
+    print("Image captured!")
+if __name__ == "__main__":
+    main()
+
         
              
                    </code></pre>
@@ -1133,74 +1153,89 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm5">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
-                        
+<pre ><code class="language-asm">; Initialize ArduCAM
+INIT_ARDUCAM:
+    ; Write value 0x55 to ARDUCHIP_TEST1 register to test connection
+    WRITE_REG ARDUCHIP_TEST1, 0x55
+    ; Check if the connection test passed
+    READ_REG ARDUCHIP_TEST1, R0
+    CMP R0, 0x55
+    BNE ARDUCAM_FAILED
+    ; Connection test passed, proceed with initialization
+    ; Add initialization code here
+    ; ...
+    JMP ARDUCAM_SUCCESS
+ARDUCAM_FAILED:
+    ; Connection test failed, handle error
+    ; Add error handling code here
+    ; ...
+ARDUCAM_SUCCESS:
+    ; Initialization successful, continue with other operations
+    ; Add main loop code here
+    ; ...
+    JMP MAIN_LOOP
+MAIN_LOOP:
+    ; Capture image
+    CAPTURE_IMAGE:
+        ; Flush FIFO
+        FLUSH_FIFO
+        ; Start capture
+        START_CAPTURE
+        ; Wait for capture to complete
+        WAIT_FOR_CAPTURE_COMPLETE
+        ; Get image length
+        GET_IMAGE_LENGTH
+        ; Read image data from FIFO
+        READ_IMAGE_DATA
+        ; Save image data (optional)
+        ; Add code to save image data here
+        ; ...
+    ; Delay for some time
+    DELAY 5000  ; Delay for 5 seconds
+    ; Repeat
+    JMP MAIN_LOOP
+; Subroutines for ArduCAM operations (to be implemented)
+WRITE_REG:
+    ; Write data to a register
+    ; Add implementation here
+    ; ...
+    RET
+READ_REG:
+    ; Read data from a register
+    ; Add implementation here
+    ; ...
+    RET
+FLUSH_FIFO:
+    ; Flush FIFO buffer
+    ; Add implementation here
+    ; ...
+    RET
+START_CAPTURE:
+    ; Start image capture process
+    ; Add implementation here
+    ; ...
+    RET
+WAIT_FOR_CAPTURE_COMPLETE:
+    ; Wait for capture process to complete
+    ; Add implementation here
+    ; ...
+    RET
+GET_IMAGE_LENGTH:
+    ; Get length of captured image data
+    ; Add implementation here
+    ; ...
+    RET
+READ_IMAGE_DATA:
+    ; Read image data from FIFO buffer
+    ; Add implementation here
+    ; ...
+    RET
+DELAY:
+    ; Delay for a specified duration
+    ; Add implementation here
+    ; ...
+    RET
+
                 </code></pre>
                 <div class="but-div">
                 <button data-clipboard-target="#asm5" id="copy5-4"  class="copy-button copy-but4">
@@ -1226,31 +1261,25 @@
                 </div>
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp6">
-                <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
-                    
-                        
+<pre ><code id="text" class="language-cpp">#define RELAY_PIN 9  // Pin connected to the relay control
+void setup() {
+  pinMode(RELAY_PIN, OUTPUT);
+}
+void loop() {
+  // Turn on the monitor
+  turnMonitorOn();
+  delay(5000);  // Wait for 5 seconds
+  // Turn off the monitor
+  turnMonitorOff();
+  delay(5000);  // Wait for 5 seconds
+}
+void turnMonitorOn() {
+  digitalWrite(RELAY_PIN, HIGH);  // Activate the relay to turn the monitor on
+}
+void turnMonitorOff() {
+  digitalWrite(RELAY_PIN, LOW);  // Deactivate the relay to turn the monitor off
+}
+
                             
                 </code></pre>
                 <div class="but-div">
@@ -1258,59 +1287,36 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
         </div>
         <div class="content-code java-code" id="java6">
-                <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
+<pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
+public class MonitorControl {
+    private static final int RELAY_PIN = 9;  // Pin connected to the relay control
+    public static void main(String[] args) {
+        // Initialize GPIO pin
+        Servo relay = new Servo(RELAY_PIN);  // Servo object for the relay control
+        try {
+            while (true) {
+                // Turn on the monitor
+                turnMonitorOn(relay);
+                Thread.sleep(5000);  // Wait for 5 seconds
+                // Turn off the monitor
+                turnMonitorOff(relay);
+                Thread.sleep(5000);  // Wait for 5 seconds
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    // Function to turn the monitor on
+    private static void turnMonitorOn(Servo relay) {
+        relay.setAngle(180); // Activate the relay to turn the monitor on
+    }
+
+    // Function to turn the monitor off
+    private static void turnMonitorOff(Servo relay) {
+        relay.setAngle(0); // Deactivate the relay to turn the monitor off
+    }
+}
+
                    
                         
                   </code> </pre>
@@ -1319,41 +1325,30 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                 </div>
                   <div class="content-code py-code" id="py6">
-                  <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
+<pre ><code class="language-py">import RPi.GPIO as GPIO
+import time
+RELAY_PIN = 9  # Pin connected to the relay control
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(RELAY_PIN, GPIO.OUT)
+# Function to turn the monitor on
+def turn_monitor_on():
+    GPIO.output(RELAY_PIN, GPIO.HIGH)  # Activate the relay to turn the monitor on
+# Function to turn the monitor off
+def turn_monitor_off():
+    GPIO.output(RELAY_PIN, GPIO.LOW)  # Deactivate the relay to turn the monitor off
+# Main loop
+try:
+    while True:
+        # Turn on the monitor
+        turn_monitor_on()
+        time.sleep(5)  # Wait for 5 seconds
+        # Turn off the monitor
+        turn_monitor_off()
+        time.sleep(5)  # Wait for 5 seconds
+except KeyboardInterrupt:
+    GPIO.cleanup()
+
         
              
                    </code></pre>
@@ -1362,73 +1357,52 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm6">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
+<pre ><code class="language-asm">; Define constants
+RELAY_PIN       EQU 9          ; Pin connected to the relay control
+; Define register usage
+REG_DELAY       R0              ; Delay register
+; Initialize
+INIT:
+    ; Setup GPIO pin for relay control
+    GPIO_SETUP RELAY_PIN, OUTPUT
+
+; Main loop
+MAIN_LOOP:
+    ; Turn on the monitor
+    TURN_MONITOR_ON
+    ; Delay for 5 seconds
+    MOV R0, #5000
+    CALL DELAY
+    ; Turn off the monitor
+    TURN_MONITOR_OFF
+    ; Delay for 5 seconds
+    MOV R0, #5000
+    CALL DELAY
+    ; Repeat
+    B MAIN_LOOP
+; Subroutine to turn the monitor on
+TURN_MONITOR_ON:
+    ; Activate the relay to turn the monitor on
+    GPIO_WRITE RELAY_PIN, HIGH
+    RET
+; Subroutine to turn the monitor off
+TURN_MONITOR_OFF:
+    ; Deactivate the relay to turn the monitor off
+    GPIO_WRITE RELAY_PIN, LOW
+    RET
+; Subroutine for delay
+DELAY:
+    ; Loop for delay
+    DELAY_LOOP:
+        ; Decrement delay register
+        SUBS R0, R0, #1
+        ; Check if delay complete
+        BEQ DELAY_DONE
+        ; Repeat delay loop
+        B DELAY_LOOP
+    DELAY_DONE:
+    RET
+
                         
                 </code></pre>
                 <div class="but-div">
@@ -1456,31 +1430,25 @@
                 </div>
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp7">
-                <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
-                    
-                        
+<pre ><code id="text" class="language-cpp">#define SPEAKER_PIN 9  // Pin connected to the relay or transistor
+void setup() {
+  pinMode(SPEAKER_PIN, OUTPUT);
+}
+void loop() {
+  // Turn on the speakers
+  turnSpeakersOn();
+  delay(5000);  // Wait for 5 seconds
+  // Turn off the speakers
+  turnSpeakersOff();
+  delay(5000);  // Wait for 5 seconds
+}
+void turnSpeakersOn() {
+  digitalWrite(SPEAKER_PIN, HIGH);  // Activate the relay or transistor to turn the speakers on
+}
+void turnSpeakersOff() {
+  digitalWrite(SPEAKER_PIN, LOW);  // Deactivate the relay or transistor to turn the speakers off
+}
+                     
                             
                 </code></pre>
                 <div class="but-div">
@@ -1488,60 +1456,35 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
         </div>
         <div class="content-code java-code" id="java7">
-                <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
-                   
+<pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
+public class SpeakerControl {
+    private static final int SPEAKER_PIN = 9;  // Pin connected to the relay or transistor
+    public static void main(String[] args) {
+        // Initialize GPIO pin
+        Servo speaker = new Servo(SPEAKER_PIN);  // Servo object for the relay or transistor
+        try {
+            while (true) {
+                // Turn on the speakers
+                turnSpeakersOn(speaker);
+                Thread.sleep(5000);  // Wait for 5 seconds
+                // Turn off the speakers
+                turnSpeakersOff(speaker);
+                Thread.sleep(5000);  // Wait for 5 seconds
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    // Function to turn the speakers on
+    private static void turnSpeakersOn(Servo speaker) {
+        speaker.setAngle(180); // Activate the relay or transistor to turn the speakers on
+    }
+    // Function to turn the speakers off
+    private static void turnSpeakersOff(Servo speaker) {
+        speaker.setAngle(0); // Deactivate the relay or transistor to turn the speakers off
+    }
+}
+
                         
                   </code> </pre>
                   <div class="but-div">
@@ -1549,41 +1492,31 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                 </div>
                   <div class="content-code py-code" id="py7">
-                  <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
+<pre ><code class="language-py">import RPi.GPIO as GPIO
+import time
+SPEAKER_PIN = 9  # Pin connected to the relay or transistor
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(SPEAKER_PIN, GPIO.OUT)
+# Function to turn the speakers on
+def turn_speakers_on():
+    GPIO.output(SPEAKER_PIN, GPIO.HIGH)  # Activate the relay or transistor to turn the speakers on
+# Function to turn the speakers off
+def turn_speakers_off():
+    GPIO.output(SPEAKER_PIN, GPIO.LOW)  # Deactivate the relay or transistor to turn the speakers off
+# Main loop
+try:
+    while True:
+        # Turn on the speakers
+        turn_speakers_on()
+        time.sleep(5)  # Wait for 5 seconds
+        # Turn off the speakers
+        turn_speakers_off()
+        time.sleep(5)  # Wait for 5 seconds
+
+except KeyboardInterrupt:
+    GPIO.cleanup()
+
         
              
                    </code></pre>
@@ -1592,73 +1525,51 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm7">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
+<pre ><code class="language-asm">; Define constants
+SPEAKER_PIN     EQU 9          ; Pin connected to the relay or transistor
+; Define register usage
+REG_DELAY       R0              ; Delay register
+; Initialize
+INIT:
+    ; Setup GPIO pin for speaker control
+    GPIO_SETUP SPEAKER_PIN, OUTPUT
+; Main loop
+MAIN_LOOP:
+    ; Turn on the speakers
+    TURN_SPEAKERS_ON
+    ; Delay for 5 seconds
+    MOV R0, #5000
+    CALL DELAY
+    ; Turn off the speakers
+    TURN_SPEAKERS_OFF
+    ; Delay for 5 seconds
+    MOV R0, #5000
+    CALL DELAY
+    ; Repeat
+    B MAIN_LOOP
+; Subroutine to turn the speakers on
+TURN_SPEAKERS_ON:
+    ; Activate the relay or transistor to turn the speakers on
+    GPIO_WRITE SPEAKER_PIN, HIGH
+    RET
+; Subroutine to turn the speakers off
+TURN_SPEAKERS_OFF:
+    ; Deactivate the relay or transistor to turn the speakers off
+    GPIO_WRITE SPEAKER_PIN, LOW
+    RET
+; Subroutine for delay
+DELAY:
+    ; Loop for delay
+    DELAY_LOOP:
+        ; Decrement delay register
+        SUBS R0, R0, #1
+        ; Check if delay complete
+        BEQ DELAY_DONE
+        ; Repeat delay loop
+        B DELAY_LOOP
+    DELAY_DONE:
+    RET
+
                         
                 </code></pre>
                 <div class="but-div">
@@ -1685,31 +1596,16 @@
                 </div>
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp8">
-                <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
-                    
-                        
+<pre ><code id="text" class="language-cpp">#define SOUND_SENSOR_PIN A0 // Analog pin connected to the sound sensor
+void setup() {
+  Serial.begin(9600);
+}
+void loop() {
+  int soundLevel = analogRead(SOUND_SENSOR_PIN);
+  Serial.println("Sound Level: " + String(soundLevel));
+  delay(1000); // Read and print sound level every second
+}
+
                             
                 </code></pre>
                 <div class="but-div">
@@ -1717,59 +1613,25 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
         </div>
         <div class="content-code java-code" id="java8">
-                <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
+<pre><code class="language-Java">import edu.wpi.first.wpilibj.AnalogInput;
+public class SoundSensor {
+    private static final int SOUND_SENSOR_PIN = 0;  // Analog pin connected to the sound sensor
+    public static void main(String[] args) {
+        // Initialize analog input
+        AnalogInput soundSensor = new AnalogInput(SOUND_SENSOR_PIN);
+        try {
+            while (true) {
+                // Read sound level
+                int soundLevel = soundSensor.getValue();
+                System.out.println("Sound Level: " + soundLevel);
+                Thread.sleep(1000);  // Read and print sound level every second
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
                    
                         
                   </code> </pre>
@@ -1778,42 +1640,23 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                 </div>
                   <div class="content-code py-code" id="py8">
-                  <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-        
+<pre ><code class="language-py">import time
+import board
+import analogio
+SOUND_SENSOR_PIN = board.A0  # Analog pin connected to the sound sensor
+# Setup analog input
+sound_sensor = analogio.AnalogIn(SOUND_SENSOR_PIN)
+# Main loop
+try:
+    while True:
+        # Read sound level
+        sound_level = sound_sensor.value
+        print("Sound Level:", sound_level)
+        time.sleep(1)  # Read and print sound level every second
+except KeyboardInterrupt:
+    pass  # Handle keyboard interrupt gracefully
+
+
              
                    </code></pre>
                    <div class="but-div">
@@ -1821,73 +1664,38 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm8">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
+<pre ><code class="language-asm">; Define constants
+SOUND_SENSOR_PIN     EQU A0  ; Analog pin connected to the sound sensor
+; Initialize
+INIT:
+    ; Setup serial communication
+    SERIAL_SETUP 9600
+; Main loop
+MAIN_LOOP:
+    ; Read sound level
+    READ_SOUND_LEVEL SOUND_SENSOR_PIN
+    ; Print sound level
+    PRINT_SOUND_LEVEL
+    ; Delay for 1 second
+    DELAY 1000
+    ; Repeat
+    B MAIN_LOOP
+; Subroutine to read sound level
+READ_SOUND_LEVEL:
+    ; Read analog input value
+    ADC_READ R0, SOUND_SENSOR_PIN
+    RET
+; Subroutine to print sound level
+PRINT_SOUND_LEVEL:
+    ; Convert sound level to string
+    ; Print sound level
+    RET
+; Subroutine for delay
+DELAY:
+    ; Delay for a specified duration
+    ; Implementation needed
+    RET
+
                         
                 </code></pre>
                 <div class="but-div">
@@ -1915,92 +1723,63 @@
                 </div>
                 <div class="code">
                     <div class="content-code cpp-code" id="cpp9">
-                <pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
-                    #define NECK_PIN 2       // Pin number for the neck servo
-                    #define NECK_DELAY 500   // Delay time between movements in milliseconds
-                    Servo neck;  // Servo object for the neck
-                    void setup() {
-                      neck.attach(NECK_PIN);  // Attach the servo to the pin
-                    }
-                    void loop() {
-                      // Move neck left
-                      moveNeckLeft();
-                      delay(NECK_DELAY);
-                      // Move neck right
-                      moveNeckRight();
-                      delay(NECK_DELAY);
-                    }
-                    // Function to move the neck left
-                    void moveNeckLeft() {
-                      neck.write(0); // Adjust angle as needed for left movement
-                    }
-                    // Function to move the neck right
-                    void moveNeckRight() {
-                      neck.write(180); // Adjust angle as needed for right movement
-                    }
-                    
-                        
-                            
+<pre ><code id="text" class="language-cpp">#include &lt;Servo.h&gt;
+#define HEAD_SERVO_PIN 9  // Pin connected to the servo controlling head movement
+Servo headServo;  // Servo object for controlling head movement
+void setup() {
+  headServo.attach(HEAD_SERVO_PIN);  // Attach the servo to the specified pin
+}
+void loop() {
+  moveHeadLeft();
+  delay(2000);  // Wait for 2 seconds
+  moveHeadRight();
+  delay(2000);  // Wait for 2 seconds
+}
+void moveHeadLeft() {
+  headServo.write(90);  // Adjust angle as needed for left movement
+}
+void moveHeadRight() {
+  headServo.write(0);  // Adjust angle as needed for right movement
+}
+
+
                 </code></pre>
                 <div class="but-div">
                 <button  data-clipboard-target="#cpp9" id="copy9-1"  class="copy-button copy-but1">
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
         </div>
         <div class="content-code java-code" id="java9">
-                <pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
-                    public class LegControl {
-                        private static final int NUM_LEGS = 2;      // Number of legs
-                        private static final int NUM_JOINTS = 3;    // Number of joints per leg
-                        private static final int DELAY_TIME = 500;  // Delay time between movements in milliseconds
-                        public static void main(String[] args) {
-                            Servo[][] legs = new Servo[NUM_LEGS][NUM_JOINTS];
-                            int[][] legPins = {
-                                {2, 3, 4},  // Example pin numbers for leg 1, adjust as needed
-                                {5, 6, 7}   // Example pin numbers for leg 2, adjust as needed
-                            };
-                            // Attach each servo to its respective pin
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j] = new Servo(legPins[i][j]);
-                                }
-                            }
-                            while (true) {
-                                // Move legs forward
-                                moveLegsForward(legs);
-                                delay(DELAY_TIME);
-                                // Move legs backward
-                                moveLegsBackward(legs);
-                                delay(DELAY_TIME);
-                            }
-                        }
-                        // Function to move legs forward
-                        private static void moveLegsForward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(0); // Adjust angle as needed for forward movement
-                                }
-                            }
-                        }
-                        // Function to move legs backward
-                        private static void moveLegsBackward(Servo[][] legs) {
-                            for (int i = 0; i < NUM_LEGS; i++) {
-                                for (int j = 0; j < NUM_JOINTS; j++) {
-                                    legs[i][j].setAngle(180); // Adjust angle as needed for backward movement
-                                }
-                            }
-                        }
-                        // Function to emulate delay
-                        private static void delay(int milliseconds) {
-                            try {
-                                Thread.sleep(milliseconds);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    
-                    
-                   
+<pre><code class="language-Java">import edu.wpi.first.wpilibj.Servo;
+public class HeadControl {
+    private static final int HEAD_SERVO_PIN = 9;  // Pin connected to the servo controlling head movement
+    public static void main(String[] args) {
+        // Initialize servo object
+        Servo headServo = new Servo(HEAD_SERVO_PIN);
+        try {
+            while (true) {
+                // Move head left
+                moveHeadLeft(headServo);
+                Thread.sleep(2000);  // Wait for 2 seconds
+                // Move head right
+                moveHeadRight(headServo);
+                Thread.sleep(2000);  // Wait for 2 seconds
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    // Function to move head left
+    private static void moveHeadLeft(Servo servo) {
+        servo.setAngle(90);  // Adjust angle as needed for left movement
+    }
+    // Function to move head right
+    private static void moveHeadRight(Servo servo) {
+        servo.setAngle(0);  // Adjust angle as needed for right movement
+    }
+}
+
+
+
                         
                   </code> </pre>
                   <div class="but-div">
@@ -2008,42 +1787,34 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                 </div>
                   <div class="content-code py-code" id="py9">
-                  <pre ><code class="language-py">from time import sleep
-        import RPi.GPIO as GPIO
-        NUM_LEGS = 2      # Number of legs
-        NUM_JOINTS = 3    # Number of joints per leg
-        DELAY_TIME = 0.5  # Delay time between movements in seconds
-        # Pin numbers for each leg joint servo
-        leg_pins = [
-            [2, 3, 4],  # Example pin numbers for leg 1, adjust as needed
-            [5, 6, 7]   # Example pin numbers for leg 2, adjust as needed
-        ]
-        # Setup GPIO
-        GPIO.setmode(GPIO.BCM)
-        for leg in leg_pins:
-            for pin in leg:
-                GPIO.setup(pin, GPIO.OUT)
-        # Function to move legs forward
-        def move_legs_forward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.LOW) # Adjust angle as needed for forward movement
-        # Function to move legs backward
-        def move_legs_backward():
-            for leg in leg_pins:
-                for pin in leg:
-                    GPIO.output(pin, GPIO.HIGH) # Adjust angle as needed for backward movement
-        try:
-            while True:
-                # Move legs forward
-                move_legs_forward()
-                sleep(DELAY_TIME)
-                # Move legs backward
-                move_legs_backward()
-                sleep(DELAY_TIME)
-        except KeyboardInterrupt:
-            GPIO.cleanup()
-        
+<pre ><code class="language-py">import RPi.GPIO as GPIO
+import time
+HEAD_SERVO_PIN = 9  # Pin connected to the servo controlling head movement
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(HEAD_SERVO_PIN, GPIO.OUT)
+# Initialize servo object
+head_servo = GPIO.PWM(HEAD_SERVO_PIN, 50)  # 50 Hz PWM frequency
+head_servo.start(0)  # Start servo at 0 degree position
+# Function to move head left
+def move_head_left():
+    head_servo.ChangeDutyCycle(7.5)  # Adjust duty cycle as needed for left movement
+# Function to move head right
+def move_head_right():
+    head_servo.ChangeDutyCycle(2.5)  # Adjust duty cycle as needed for right movement
+# Main loop
+try:
+    while True:
+        # Move head left
+        move_head_left()
+        time.sleep(2)  # Wait for 2 seconds
+        # Move head right
+        move_head_right()
+        time.sleep(2)  # Wait for 2 seconds
+except KeyboardInterrupt:
+    head_servo.stop()
+    GPIO.cleanup()
+
              
                    </code></pre>
                    <div class="but-div">
@@ -2051,73 +1822,40 @@
                     <i class="fa-regular fa-clipboard"></i> Copy</button></div>
                   </div>
                   <div class="content-code asm-code" id="asm9">
-                   <pre ><code class="language-asm">; Define constants
-                    NUM_LEGS        EQU 2          ; Number of legs
-                    NUM_JOINTS      EQU 3          ; Number of joints per leg
-                    DELAY_TIME      EQU 500        ; Delay time between movements in milliseconds
-                    ; Define servo angles
-                    SERVO_FORWARD   EQU 0           ; Angle for forward movement
-                    SERVO_BACKWARD  EQU 180         ; Angle for backward movement
-                    ; Define register usage
-                    REG_DELAY       R0              ; Delay register
-                    REG_COUNTER     R1              ; Loop counter register
-                    REG_SERVO_ANGLE R2              ; Servo angle register
-                    ; Define pin numbers for each leg joint servo
-                    LEG_PINS        DSB 6           ; Array to hold pin numbers for each leg joint servo
-                                    DB  2, 3, 4      ; Example pin numbers for leg 1, adjust as needed
-                                    DB  5, 6, 7      ; Example pin numbers for leg 2, adjust as needed
-                    ; Initialize
-                    INIT:
-                        ; Setup GPIO pins for leg joint servos
-                        LDR R1, =LEG_PINS
-                        MOV R2, #NUM_LEGS
-                    INIT_LOOP:
-                        LDRB R3, [R1], #1
-                        MOV R0, #1
-                        ; Setup GPIO pin for servo control
-                        GPIO_SETUP R3, OUTPUT
-                        SUBS R2, R2, R0
-                        BNE INIT_LOOP
-                    ; Main loop
-                    MAIN_LOOP:
-                        ; Move legs forward
-                        MOVE_LEGS_FORWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Move legs backward
-                        MOVE_LEGS_BACKWARD
-                        ; Delay
-                        MOV R0, #DELAY_TIME
-                        CALL DELAY
-                        ; Repeat
-                        B MAIN_LOOP
-                    ; Subroutine to move legs forward
-                    MOVE_LEGS_FORWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_FORWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_FORWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                            PWM_WRITE [R3+R4], R1
-                        ENDFOR
-                        SUBS R2, R2, #1
-                        BNE MOVE_FORWARD_LOOP
-                        RET
-                    ; Subroutine to move legs backward
-                    MOVE_LEGS_BACKWARD:
-                        ; Set servo angle for each leg joint
-                        LDR R1, =SERVO_BACKWARD
-                        MOV R2, #NUM_LEGS
-                    MOVE_BACKWARD_LOOP:
-                        ; Set servo angle
-                        LDRB R3, [R1], #1
-                        FOR R4, 0, NUM_JOINTS-1
-                            ; Write servo angle to GPIO pin
-                           
+<pre ><code class="language-asm">; Define constants
+HEAD_SERVO_PIN  EQU 9  ; Pin connected to the servo controlling head movement
+; Initialize
+INIT:
+    ; Setup GPIO pin for head servo control
+    GPIO_SETUP HEAD_SERVO_PIN, OUTPUT
+; Main loop
+MAIN_LOOP:
+    ; Move head left
+    MOVE_HEAD_LEFT
+    ; Delay for 2 seconds
+    DELAY 2000
+    ; Move head right
+    MOVE_HEAD_RIGHT
+    ; Delay for 2 seconds
+    DELAY 2000
+    ; Repeat
+    B MAIN_LOOP
+; Subroutine to move head left
+MOVE_HEAD_LEFT:
+    ; Adjust duty cycle for left movement
+    ; IMPLEMENTATION_NEEDED
+    RET
+; Subroutine to move head right
+MOVE_HEAD_RIGHT:
+    ; Adjust duty cycle for right movement
+    ; IMPLEMENTATION_NEEDED
+    RET
+; Subroutine for delay
+DELAY:
+    ; Delay for a specified duration
+    ; IMPLEMENTATION_NEEDED
+    RET
+
                         
                 </code></pre>
                 <div class="but-div">

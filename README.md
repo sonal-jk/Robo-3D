@@ -1,25 +1,36 @@
-# ROBO 3D
+# ROBO-3D
 
-**Objective**
+## Overview
 
->The Robo 3D website serves as a resource for individuals looking to step into the world of 3D modeling. The site aims to guide beginners, offering valuable information on how to initiate their journey into 3D modeling. Additionally, it provides free learning resources and showcases our own 3D models.
+This Website is based on 3D model design for robots in blender, maya, autocad, and in this website having source code of every part movement of robot that you can add in ARDINO in 4 different languages.
 
-**Key Features**
+## Features
 
-* The website introduces newcomers to the basics of 3D modeling.
+- Learn 3D Designing
+- Provide Source code for part movement
+- Consider 3 software(blender, maya, autocad) for 3D and 4 languages(assembly, python, C++, Java) for part movement
 
-* Provides information on latest tools and softwares in this field.
+## Tech Stack
 
-* Offers tutorials, guides, and online courses to empower users with the fundamental skills required for 3D modeling.
+- **Frontend**: HTML5, CSS3
+- **Backend**: Javascript, Three.js
 
-* Showcases a diverse range of 3D models created by our team.
+### Installation
 
-* Ensures a user-friendly experience with a responsive design, making the website accessible across various devices.
+Step 1:- `git clone github.com/devKanix/Robo-3D` for clone the repo. <br></br>
+Steo 2:- Install `Three.js` <br></br>
+
+## Getting Started
+
+If you want to run the project locally, follow these steps:-
+
+Step 1:- `Go Live` in VS-Code <br></br>
+
+### View website:- [here](https://sonal-jk.github.io/Robo-3D/)
+
+## Contributor
+
+<img src="https://contributors-img.web.app/image?repo=sonal-jk/Robo-3D"/>
 
 
-**Demo**
-
->To see the ROBO 3D Website in action, you can visit the live demo [here](https://sonal-jk.github.io/Robo-3D/).
-
-
-Thank you for checking out Robo 3D! If you have any questions or feedback, please don't hesitate to reach out.
+## Thank you for visiting.

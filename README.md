@@ -25,8 +25,7 @@ Steo 2:- Install `Three.js` <br></br>
 If you want to run the project locally, follow these steps:-
 
 Step 1:- `Go Live` in VS-Code <br></br>
-
-### View website:- [here](https://sonal-jk.github.io/Robo-3D/)
+**View website**: [here](https://sonal-jk.github.io/Robo-3D/)
 
 ## Contributor
 
